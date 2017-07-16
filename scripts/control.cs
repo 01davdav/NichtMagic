@@ -6,16 +6,20 @@ using Random = UnityEngine.Random;
 
 public class control : MonoBehaviour {
 
-	List<Card> Deck = new List<Card>();
+	public static List<Card> Deck = new List<Card>();
+	public Card card;
 	
 	// Use this for initialization
 	void Start ()
 	{
 		for (int co = 0; co < 50; co++)
-			Deck.Add( new Card(GetRandomName(), 0, 0, 0, 0));
+		{
+			card = new Card(GetRandomName(), 0, 0, 0, 0);
+			Deck.Add(card);
+		}
 		for (int co = 0; co < 5; co++)
 		{
-			Debug.Log(Deck[co].getName());
+			Debug.Log(Deck[co]);
 		}
 		for (int i = 0; i < Deck.Count; i++) {
 			Card temp = Deck[i];
