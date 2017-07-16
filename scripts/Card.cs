@@ -9,13 +9,15 @@ public class Card : MonoBehaviour
 	private int manacosts;
 	private int attack;
 	private int life;
+	private int shield;
 	
-	public Card(String newName, int newManacosts, int newAttack, int newLife)
+	public Card(String newName, int newManacosts, int newAttack, int newLife, int shield)
 	{
 		setName(newName);
 		setManacosts(newManacosts);
 		setAttack(newAttack);
 		setLife(newLife);
+		setShield(newShield);
 	}
 
 	public void setName(String newName)
@@ -38,6 +40,11 @@ public class Card : MonoBehaviour
 		life = newLife;
 	}
 
+	public void setShield(int newShield)
+	{
+		shield = newShield:
+	}
+
 	public int getManacosts()
 	{
 		return manacosts;
@@ -56,6 +63,11 @@ public class Card : MonoBehaviour
 	public string getName()
 	{
 		return name;
+	}
+
+	public int getShield()
+	{
+		return shield;
 	}
 	
 	// Use this for initialization
