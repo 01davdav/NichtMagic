@@ -21,7 +21,7 @@ public class Hero : MonoBehaviour
 
 	public void setHp(int newHp)
 	{
-		if (newHp > 0)
+		if (newHp >= 0)
 		{
 			hp = newHp;
 		}
@@ -45,7 +45,7 @@ public class Hero : MonoBehaviour
 	
 	public void setAttack(int newAttack)
 	{
-		if (newAttack > 0)
+		if (newAttack >= 0)
 		{
 			attack = newAttack;
 		}
@@ -69,7 +69,7 @@ public class Hero : MonoBehaviour
 	
 	public void setMana(int newMana)
 	{
-		if (newMana > 0)
+		if (newMana >= 0)
 		{
 			mana = newMana;
 		}
@@ -93,7 +93,7 @@ public class Hero : MonoBehaviour
 
 	public void setMaxMana(int newMaxmana)
 	{
-		if (newMaxmana > 0 && newMaxmana < maxMaxMana)
+		if (newMaxmana >= 0 && newMaxmana < maxMaxMana)
 		{
 			maxMana = newMaxmana;
 		}
