@@ -18,22 +18,22 @@ public class Card : MonoBehaviour
 		setLife(newLife);
 	}
 
-	void setName(String newName)
+	public void setName(String newName)
 	{
 		name = newName;
 	}
 
-	void setManacosts(int newManacosts)
+	public void setManacosts(int newManacosts)
 	{
 		manacosts = newManacosts;
 	}
 
-	void setAttack(int newAttack)
+	public void setAttack(int newAttack)
 	{
 		attack = newAttack;
 	}
 
-	void setLife(int newLife)
+	public void setLife(int newLife)
 	{
 		life = newLife;
 	}

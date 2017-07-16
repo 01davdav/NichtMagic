@@ -17,32 +17,32 @@ public class Hero : MonoBehaviour
 		setMana(newMana);
 	}
 
-	void setHp(int newHp)
+	public void setHp(int newHp)
 	{
 		hp = newHp;
 	}
 	
-	void setAttack(int newAttack)
+	public void setAttack(int newAttack)
 	{
 		attack = newAttack;
 	}
 	
-	void setMana(int newMana)
+	public void setMana(int newMana)
 	{
 		mana = newMana;
 	}
 
-	int getHp()
+	public int getHp()
 	{
 		return hp;
 	}
 
-	int getAttack()
+	public int getAttack()
 	{
 		return attack;
 	}
 
-	int getMana()
+	public int getMana()
 	{
 		return mana;
 	}
