@@ -12,7 +12,7 @@ public class control : MonoBehaviour {
 	void Start ()
 	{
 		for (int co = 0; co < 50; co++)
-			Deck.Add( new Card(GetRandomName()) );
+			Deck.Add( new Card(GetRandomName(), 0, 0, 0, 0));
 		for (int co = 0; co < 5; co++)
 		{
 			Debug.Log(Deck[co].getName());
