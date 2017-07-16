@@ -11,6 +11,6 @@ public class control : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		print("very sexy LUTTI");
+		print("very sexy LUTTI.-.");
 	}
 }
