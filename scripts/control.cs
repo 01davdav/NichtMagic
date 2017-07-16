@@ -6,7 +6,7 @@ public class control : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		print("sexy");
+		print("very sexy");
 	}
 	
 	// Update is called once per frame
