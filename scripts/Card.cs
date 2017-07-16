@@ -10,6 +10,7 @@ public class Card : MonoBehaviour
 	private int attack;
 	private int life;
 	private int shield;
+	private Boolean breakable = true;
 	
 	public Card(String newName, int newManacosts, int newAttack, int newLife, int newShield)
 	{
@@ -45,6 +46,11 @@ public class Card : MonoBehaviour
 		shield = newShield;
 	}
 
+	public void setBreakable(Boolean newBreakable)
+	{
+		breakable = newBreakable;
+	}
+
 	public int getManacosts()
 	{
 		return manacosts;
@@ -68,6 +74,11 @@ public class Card : MonoBehaviour
 	public int getShield()
 	{
 		return shield;
+	}
+
+	public Boolean getBreakable()
+	{
+		return breakable;
 	}
 	
 	// Use this for initialization
