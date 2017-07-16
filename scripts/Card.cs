@@ -10,7 +10,7 @@ public class Card : MonoBehaviour
 	private int attack;
 	private int life;
 	
-	Card(String newName, int newManacosts, int newAttack, int newLife)
+	public Card(String newName, int newManacosts, int newAttack, int newLife)
 	{
 		setName(newName);
 		setManacosts(newManacosts);
