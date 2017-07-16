@@ -7,7 +7,7 @@ public class Card : MonoBehaviour
 {
 	private String name;
 	
-	Card(String newName)
+	public Card(String newName)
 	{
 		setName(newName);
 	}
@@ -15,6 +15,11 @@ public class Card : MonoBehaviour
 	void setName(String newName)
 	{
 		name = newName;
+	}
+	
+	public string getName()
+	{
+		return name;
 	}
 	
 	// Use this for initialization
