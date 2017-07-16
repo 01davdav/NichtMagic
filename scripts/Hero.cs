@@ -21,24 +21,97 @@ public class Hero : MonoBehaviour
 
 	public void setHp(int newHp)
 	{
-		hp = newHp;
+		if (newHp > 0)
+		{
+			hp = newHp;
+		}
+	}
+
+	public void addHp(int newHp)
+	{
+		if (newHp > 0)
+		{
+			hp += newHp;
+		}
+	}
+
+	public void removeHp(int newHp)
+	{
+		if (newHp > 0)
+		{
+			hp -= newHp;
+		}
 	}
 	
 	public void setAttack(int newAttack)
 	{
-		attack = newAttack;
+		if (newAttack > 0)
+		{
+			attack = newAttack;
+		}
+	}
+
+	public void addAttack(int newAttack)
+	{
+		if (newAttack > 0)
+		{
+			attack += newAttack;
+		}
+	}
+
+	public void removeAttack(int newAttack)
+	{
+		if (newAttack > 0)
+		{
+			attack -= newAttack;
+		}
 	}
 	
 	public void setMana(int newMana)
 	{
-		mana = newMana;
+		if (newMana > 0)
+		{
+			mana = newMana;
+		}
+	}
+
+	public void addMana(int newMana)
+	{
+		if (newMana > 0)
+		{
+			mana += newMana;
+		}
+	}
+
+	public void removeMana(int newMana)
+	{
+		if (newMana > 0)
+		{
+			mana -= newMana;
+		}
 	}
 
 	public void setMaxMana(int newMaxmana)
 	{
-		if (maxMana < maxMaxMana)
+		if (newMaxmana > 0 && newMaxmana < maxMaxMana)
 		{
 			maxMana = newMaxmana;
+		}
+	}
+
+	public void addMaxMana(int newMaxmana)
+	{
+		if (newMaxmana > 0)
+		{
+			maxMana += newMaxmana;
+		}
+	}
+
+	public void removeMaxMana(int newMaxmana)
+	{
+		if (newMaxmana > 0)
+		{
+			maxMana -= newMaxmana;
 		}
 	}
 

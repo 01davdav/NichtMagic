@@ -23,6 +23,7 @@ public class Card : MonoBehaviour
 
 	public void setName(String newName)
 	{
+		if(name != null)
 		name = newName;
 	}
 
