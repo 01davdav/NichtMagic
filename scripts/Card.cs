@@ -42,7 +42,7 @@ public class Card : MonoBehaviour
 
 	public void setShield(int newShield)
 	{
-		shield = newShield:
+		shield = newShield;
 	}
 
 	public int getManacosts()
