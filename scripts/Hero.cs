@@ -9,12 +9,14 @@ public class Hero : MonoBehaviour
 	private int hp;
 	private int attack;
 	private int mana;
+	private int maxMana;
+	private int maxMaxMana = 15;
 	
-	public Hero(int newHp, int newAttack, int newMana)
+	public Hero(int newHp, int newAttack, int newMaxMana)
 	{
 		setHp(newHp);
 		setAttack(newAttack);
-		setMana(newMana);
+		setMana(newMaxMana);
 	}
 
 	public void setHp(int newHp)
@@ -32,6 +34,19 @@ public class Hero : MonoBehaviour
 		mana = newMana;
 	}
 
+	public void setMaxMana(int newMaxmana)
+	{
+		if (maxMana < maxMaxMana)
+		{
+			maxMana = newMaxmana;
+		}
+	}
+
+	public int getMaxMana()
+	{
+		return maxMana;
+	}
+	
 	public int getHp()
 	{
 		return hp;
