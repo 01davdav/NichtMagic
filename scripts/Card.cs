@@ -24,8 +24,10 @@ public class Card
 
 	public void SetName(String newName)
 	{
-		if(newName != null)
-		_name = newName;
+		if (!String.IsNullOrEmpty(newName))
+		{
+			_name = newName;
+		}
 	}
 
 	public void SetManacosts(int newManacosts) //set manacosts of card

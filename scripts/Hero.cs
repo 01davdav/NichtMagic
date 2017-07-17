@@ -1,7 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using UnityEngine;
+using UnityEngineInternal.Input;
 
 public class Hero
 {
@@ -11,6 +13,8 @@ public class Hero
 	private int _mana;
 	private int _maxMana;
 	private int _maxMaxMana = 15;
+	private Boolean _mayattack;
+	private string  _name;
 	
 	public Hero(int newHp, int newAttack, int newMaxMana)
 	{
@@ -19,6 +23,19 @@ public class Hero
 		SetMana(newMaxMana);
 	}
 
+	public void setName(string newName)
+	{
+		if (!String.IsNullOrEmpty(newName))
+		{
+			_name = newName;
+		}
+	}
+
+	public void setMayAttack(Boolean newMayAttack)
+	{
+		_mayattack = newMayAttack;
+	}
+	
 	public void SetHp(int newHp) //set hp of hero
 	{
 		if (newHp >= 0)
