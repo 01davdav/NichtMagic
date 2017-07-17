@@ -5,13 +5,13 @@ using UnityEngine;
 
 public class Card
 {
-	private String _name;
-	private int _manacosts;
-	private int _attack;
-	private int _life;
-	private int _shield;
-	private int _currentShield;
-	private Boolean _breakable = true;
+	private static String _name;
+	private static int _manacosts;
+	private static int _attack;
+	private static int _life;
+	private static int _shield;
+	private static int _currentShield;
+	private static Boolean _breakable = true;
 	
 	public Card(String newName, int newManacosts, int newAttack, int newLife, int newShield)
 	{
@@ -22,7 +22,7 @@ public class Card
 		SetShield(newShield);
 	}
 
-	public void SetName(String newName)
+	public static void SetName(String newName)
 	{
 		if (!String.IsNullOrEmpty(newName))
 		{
@@ -30,7 +30,7 @@ public class Card
 		}
 	}
 
-	public void SetManacosts(int newManacosts) //set manacosts of card
+	public static void SetManacosts(int newManacosts) //set manacosts of card
 	{
 		if (newManacosts >= 0)
 		{
@@ -38,7 +38,7 @@ public class Card
 		}
 	}
 
-	public void AddManacosts(int newManacosts) //add manacosts to card
+	public static void AddManacosts(int newManacosts) //add manacosts to card
 	{
 		if (newManacosts > 0)
 		{
@@ -46,7 +46,7 @@ public class Card
 		}
 	}
 
-	public void RemoveManacosts(int newManacosts) //subtract manacosts of card
+	public static void RemoveManacosts(int newManacosts) //subtract manacosts of card
 	{
 		if (newManacosts > 0)
 		{
@@ -54,7 +54,7 @@ public class Card
 		}
 	}
 
-	public void SetAttack(int newAttack) //set attack of card
+	public static void SetAttack(int newAttack) //set attack of card
 	{
 		if (newAttack >= 0)
 		{
@@ -62,7 +62,7 @@ public class Card
 		}
 	}
 
-	public void AddAttack(int newAttack) //add attack of card
+	public static void AddAttack(int newAttack) //add attack of card
 	{
 		if (newAttack > 0)
 		{
@@ -70,7 +70,7 @@ public class Card
 		}
 	}
 
-	public void RemoveAttack(int newAttack) //subtract attack of card 
+	public static void RemoveAttack(int newAttack) //subtract attack of card 
 	{
 		if (newAttack > 0)
 		{
@@ -78,7 +78,7 @@ public class Card
 		}
 	}
 
-	public void SetLife(int newLife) //set life of card
+	public static void SetLife(int newLife) //set life of card
 	{
 		if (newLife >= 0)
 		{
@@ -86,7 +86,7 @@ public class Card
 		}
 	}
 
-	public void AddLife(int newLife) //add life of card
+	public static void AddLife(int newLife) //add life of card
 	{
 		if (newLife > 0)
 		{
@@ -94,7 +94,7 @@ public class Card
 		}
 	}
 
-	public void RemoveLife(int newLife) //subtract life of card
+	public static void RemoveLife(int newLife) //subtract life of card
 	{
 		if (newLife > 0)
 		{
@@ -102,7 +102,7 @@ public class Card
 		}
 	}
 
-	public void SetShield(int newShield) //set shield of card
+	public static void SetShield(int newShield) //set shield of card
 	{
 		if (newShield >= 0)
 		{
@@ -110,7 +110,7 @@ public class Card
 		}
 	}
 
-	public void AddShield(int newShield) //add shield of card
+	public static void AddShield(int newShield) //add shield of card
 	{
 		if (newShield > 0)
 		{
@@ -118,7 +118,7 @@ public class Card
 		}
 	}
 
-	public void RemoveShield(int newShield) //subtract shield of card 
+	public static void RemoveShield(int newShield) //subtract shield of card 
 	{
 		if (newShield > 0)
 		{
@@ -126,12 +126,12 @@ public class Card
 		}
 	}
 
-	public void SetBreakable(Boolean newBreakable) //is the shield breakable, yes - true, no - false
+	public static void SetBreakable(Boolean newBreakable) //is the shield breakable, yes - true, no - false
 	{
 		_breakable = newBreakable;
 	}
 
-	public void SetCurrentShield(int newCurrentShield) //set current value of shield 
+	public static void SetCurrentShield(int newCurrentShield) //set current value of shield 
 	{
 		if (newCurrentShield >= 0)
 		{
@@ -139,7 +139,7 @@ public class Card
 		}
 	}
 
-	public void AddCurrentShield(int newCurrentShield) //add to current shield 
+	public static void AddCurrentShield(int newCurrentShield) //add to current shield 
 	{
 		if (newCurrentShield > 0)
 		{
@@ -147,7 +147,7 @@ public class Card
 		}
 	}
 
-	public void RemoveCurrentShield(int newCurrentShield) //remove from current shield 
+	public static void RemoveCurrentShield(int newCurrentShield) //remove from current shield 
 	{
 		if (newCurrentShield > 0)
 		{
@@ -155,37 +155,37 @@ public class Card
 		}
 	}
 
-	public int GetManacosts()
+	public static int GetManacosts()
 	{
 		return _manacosts;
 	}
 
-	public int GetAttack()
+	public static int GetAttack()
 	{
 		return _attack;
 	}
 
-	public int GetLife()
+	public static int GetLife()
 	{
 		return _life;
 	}
 	
-	public string GetName()
+	public static string GetName()
 	{
 		return _name;
 	}
 
-	public int GetShield()
+	public static int GetShield()
 	{
 		return _shield;
 	}
 
-	public Boolean GetBreakable()
+	public static Boolean GetBreakable()
 	{
 		return _breakable;
 	}
 
-	public int GetCurrentShield()
+	public static int GetCurrentShield()
 	{
 		return _currentShield;
 	}
