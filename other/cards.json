@@ -1,0 +1,20 @@
+{
+  "Cards":[
+    {
+      "name" : "testerus cardus",
+      "cost" : 5,
+      "attack" : 1,
+      "life" : 4,
+      "shield" : 3,
+      "path" : "/h/s"
+    },
+    {
+      "name" : "testerus cardus Mark2",
+      "cost" : 7,
+      "attack" : 2,
+      "life" : 4,
+      "shield" : 5,
+      "path" : "/h/s"
+    }
+  ]
+}
