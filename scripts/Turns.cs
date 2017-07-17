@@ -13,7 +13,7 @@ public class Turns{
 		Player.Draw(); //draw a card
 		
 		//end of turn
-		foreach (Card c in Board.BoardCards)
+		foreach (Card c in Board.BoardCards) //set shield back to max value
 		{
 			if (c != null && Card.GetCurrentShield() > 0)
 			{

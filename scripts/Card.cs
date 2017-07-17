@@ -207,6 +207,6 @@ public class Card
 	//for testing
 	public static Card GetRandomCard()
 	{
-		return new Card(Control.GetRandomName(), 0, 0, 0, 0);
+		return new Card(Control.GetRandomName(), 0, 0, 0, 0, "path");
 	}
 }
