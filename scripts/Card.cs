@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class Card
@@ -12,14 +13,27 @@ public class Card
 	private static int _shield;
 	private static int _currentShield;
 	private static Boolean _breakable = true;
+	private static String _texturePath;
 	
-	public Card(String newName, int newManacosts, int newAttack, int newLife, int newShield)
+	public Card(String newName, int newManacosts, int newAttack, int newLife, int newShield, String newTexturePath) //create new Creature Card object
 	{
 		SetName(newName);
 		SetManacosts(newManacosts);
 		SetAttack(newAttack);
 		SetLife(newLife);
 		SetShield(newShield);
+		SetPath(newTexturePath);
+	}
+
+	public Card(String newName, int newManacosts) //create new Spell Card object
+	{
+		SetName(newName);
+		SetManacosts(newManacosts);
+	}
+
+	public static void setPath(String newTexturePath)
+	{
+		_texturePath = newTexturePath;
 	}
 
 	public static void SetName(String newName)
