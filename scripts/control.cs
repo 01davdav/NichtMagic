@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -33,20 +34,14 @@ public class Control : MonoBehaviour {
 			Player.Deck[i] = Player.Deck[randomIndex];
 			Player.Deck[randomIndex] = temp;
 		}
-		Debug.Log("-----Shuffled----");
-		//debug first cards
-		for (int co = 0; co < 5; co++)
-		{
-			Debug.Log(Player.Deck[co].GetName());
-		}
 		//Drawing the first five cards
-		StartCoroutine(Draw5());
+		StartCoroutine(Draw4());
 	}
 
 	//Drawing the first five cards
-	IEnumerator Draw5()
+	IEnumerator Draw4()
 	{
-		for (int c = 0; c < 5; c++)
+		for (int c = 0; c < 4; c++)
 		{
 			yield return new WaitForSeconds(0.2f);
 			Player.Draw();
@@ -62,8 +57,11 @@ public class Control : MonoBehaviour {
 		return name;
 	}
 
-	public static void InstantiateHandCard(Card card, int c)
+	public static void InstantiateHandCard(Card card, int c, String tag)
 	{
-		Instantiate(Handcard, new Vector3(-6+(c*2), -3.3f, 0), Handcard.transform.rotation);
+		double height = Camera.main.orthographicSize * 2.0;
+		float fheight = (float)height;
+		GameObject myHandcard = Instantiate(Handcard, new Vector3((c*2)-5, -(fheight/2)+2, 0), Handcard.transform.rotation);
+		myHandcard.tag = tag;
 	}
 }
