@@ -8,13 +8,13 @@ using UnityEngineInternal.Input;
 public class Hero
 {
 
-	private int _hp;
-	private int _attack;
-	private int _mana;
-	private int _maxMana;
-	private int _maxMaxMana = 15;
-	private Boolean _mayattack;
-	private string  _name;
+	private static int _hp;
+	private static int _attack;
+	private static int _mana;
+	private static int _maxMana;
+	private static int _maxMaxMana = 15;
+	private static Boolean _mayattack;
+	private static string  _name;
 	
 	public Hero(int newHp, int newAttack, int newMaxMana)
 	{
@@ -23,7 +23,7 @@ public class Hero
 		SetMana(newMaxMana);
 	}
 
-	public void setName(string newName)
+	public static void SetName(string newName)
 	{
 		if (!String.IsNullOrEmpty(newName))
 		{
@@ -31,12 +31,12 @@ public class Hero
 		}
 	}
 
-	public void setMayAttack(Boolean newMayAttack)
+	public static void SetMayAttack(Boolean newMayAttack)
 	{
 		_mayattack = newMayAttack;
 	}
 	
-	public void SetHp(int newHp) //set hp of hero
+	public static void SetHp(int newHp) //set hp of hero
 	{
 		if (newHp >= 0)
 		{
@@ -44,7 +44,7 @@ public class Hero
 		}
 	}
 
-	public void AddHp(int newHp) //add hp to hero
+	public static void AddHp(int newHp) //add hp to hero
 	{
 		if (newHp > 0)
 		{
@@ -52,7 +52,7 @@ public class Hero
 		}
 	}
 
-	public void RemoveHp(int newHp) //subtract hp from hero
+	public static void RemoveHp(int newHp) //subtract hp from hero
 	{
 		if (newHp > 0)
 		{
@@ -60,7 +60,7 @@ public class Hero
 		}
 	}
 	
-	public void SetAttack(int newAttack) //set attack of hero
+	public static void SetAttack(int newAttack) //set attack of hero
 	{
 		if (newAttack >= 0)
 		{
@@ -68,7 +68,7 @@ public class Hero
 		}
 	}
 
-	public void AddAttack(int newAttack) //add attack to hero
+	public static void AddAttack(int newAttack) //add attack to hero
 	{
 		if (newAttack > 0)
 		{
@@ -76,7 +76,7 @@ public class Hero
 		}
 	}
 
-	public void RemoveAttack(int newAttack) //subtract attack from hero
+	public static void RemoveAttack(int newAttack) //subtract attack from hero
 	{
 		if (newAttack > 0)
 		{
@@ -84,7 +84,7 @@ public class Hero
 		}
 	}
 	
-	public void SetMana(int newMana) //set current mana of hero(start of turn)
+	public static void SetMana(int newMana) //set current mana of hero(start of turn)
 	{
 		if (newMana >= 0)
 		{
@@ -92,7 +92,7 @@ public class Hero
 		}
 	}
 
-	public void AddMana(int newMana) //add to current mana of hero
+	public static void AddMana(int newMana) //add to current mana of hero
 	{
 		if (newMana > 0)
 		{
@@ -100,7 +100,7 @@ public class Hero
 		}
 	}
 
-	public void RemoveMana(int newMana) //subtract from current mana of hero (playing a card)
+	public static void RemoveMana(int newMana) //subtract from current mana of hero (playing a card)
 	{
 		if (newMana > 0)
 		{
@@ -108,7 +108,7 @@ public class Hero
 		}
 	}
 
-	public void SetMaxMana(int newMaxMana) //set maximum of mana of hero (add 1 each turn)
+	public static void SetMaxMana(int newMaxMana) //set maximum of mana of hero (add 1 each turn)
 	{
 		if (newMaxMana >= 0 && newMaxMana < _maxMaxMana)
 		{
@@ -116,7 +116,7 @@ public class Hero
 		}
 	}
 
-	public void AddMaxMana(int newMaxMana) //add to maximum mana of hero
+	public static void AddMaxMana(int newMaxMana) //add to maximum mana of hero
 	{
 		if (newMaxMana > 0)
 		{
@@ -124,7 +124,7 @@ public class Hero
 		}
 	}
 
-	public void RemoveMaxMana(int newMaxMana) //subtract from maximum mana of hero
+	public static void RemoveMaxMana(int newMaxMana) //subtract from maximum mana of hero
 	{
 		if (newMaxMana > 0)
 		{
@@ -132,22 +132,22 @@ public class Hero
 		}
 	}
 
-	public int GetMaxMana()
+	public static int GetMaxMana()
 	{
 		return _maxMana;
 	}
 	
-	public int GetHp()
+	public static int GetHp()
 	{
 		return _hp;
 	}
 
-	public int GetAttack()
+	public static int GetAttack()
 	{
 		return _attack;
 	}
 
-	public int GetMana()
+	public static int GetMana()
 	{
 		return _mana;
 	}
