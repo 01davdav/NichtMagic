@@ -7,9 +7,11 @@ using UnityEngine;
 public class Player
 {
 
+	//Initializing
 	public static Card[] Hand = new Card[6];
 	public static List<Card> Deck = new List<Card>();
 
+	//Method for drawing a card
 	public static void Draw()
 	{
 		for (int c = 0; c < 6; c++)
