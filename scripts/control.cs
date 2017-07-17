@@ -34,12 +34,6 @@ public class Control : MonoBehaviour {
 			Player.Deck[i] = Player.Deck[randomIndex];
 			Player.Deck[randomIndex] = temp;
 		}
-		Debug.Log("-----Shuffled----");
-		//debug first cards
-		for (int co = 0; co < 5; co++)
-		{
-			Debug.Log(Player.Deck[co].GetName());
-		}
 		//Drawing the first five cards
 		StartCoroutine(Draw4());
 	}

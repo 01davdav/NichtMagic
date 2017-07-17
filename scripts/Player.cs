@@ -25,7 +25,6 @@ public class Player
 			if (Hand[c] == null)
 			{
 				Hand[c] = Deck[0];
-				Debug.Log(Hand[c].GetName());
 				Control.InstantiateHandCard(Hand[c],c,"H"+c);
 				Deck.Remove(Deck[0]);
 				break;
