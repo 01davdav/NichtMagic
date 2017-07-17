@@ -6,6 +6,7 @@ using Random = UnityEngine.Random;
 
 public class Control : MonoBehaviour {
 	
+	//Initializing the handcard obj
 	public static GameObject Handcard;
 	[SerializeField]
 	public GameObject Hh;
@@ -13,15 +14,19 @@ public class Control : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
 	{
+		//set handcard gameobject
 		Handcard = Hh;
+		//get 50 random cards [only for testing]
 		for (int co = 0; co < 50; co++)
 		{
 			Player.Deck.Add(Card.GetRandomCard());
 		}
+		//debug first cards
 		for (int co = 0; co < 5; co++)
 		{
 			Debug.Log(Player.Deck[co]);
 		}
+		//Shuffling the Deck
 		for (int i = 0; i < Player.Deck.Count; i++) {
 			Card temp = Player.Deck[i];
 			int randomIndex = Random.Range(i, Player.Deck.Count);
@@ -29,13 +34,16 @@ public class Control : MonoBehaviour {
 			Player.Deck[randomIndex] = temp;
 		}
 		Debug.Log("-----Shuffled----");
+		//debug first cards
 		for (int co = 0; co < 5; co++)
 		{
 			Debug.Log(Player.Deck[co].GetName());
 		}
+		//Drawing the first five cards
 		StartCoroutine(Draw5());
 	}
 
+	//Drawing the first five cards
 	IEnumerator Draw5()
 	{
 		for (int c = 0; c < 5; c++)
@@ -45,6 +53,7 @@ public class Control : MonoBehaviour {
 		}
 	}
 	
+	//random name generator [for testing]
 	private static string[] names = new string[] { "Peter", "Ron", "Satchmo", "Lutti", "David", "Suvi", "Henrik", "Ubroot", "Patrick" };
 	private static string[] lnames = new string[] { "Peter", "Ron", "Satchmo", "Hrditchka", "Luckenburger", "Maximus" };
 	public static string GetRandomName()
