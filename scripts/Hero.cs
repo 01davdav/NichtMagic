@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using UnityEngine;
 
-public class Hero : MonoBehaviour
+public class Hero
 {
 
 	private int _hp;
