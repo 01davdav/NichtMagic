@@ -31,7 +31,7 @@ public class Card
 		SetManacosts(newManacosts);
 	}
 
-	public static void setPath(String newTexturePath)
+	public static void SetPath(String newTexturePath)
 	{
 		_texturePath = newTexturePath;
 	}
