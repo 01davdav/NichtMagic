@@ -19,7 +19,7 @@ public class Hero
 		SetMana(newMaxMana);
 	}
 
-	public void SetHp(int newHp)
+	public void SetHp(int newHp) //set hp of hero
 	{
 		if (newHp >= 0)
 		{
@@ -27,7 +27,7 @@ public class Hero
 		}
 	}
 
-	public void AddHp(int newHp)
+	public void AddHp(int newHp) //add hp to hero
 	{
 		if (newHp > 0)
 		{
@@ -35,7 +35,7 @@ public class Hero
 		}
 	}
 
-	public void RemoveHp(int newHp)
+	public void RemoveHp(int newHp) //subtract hp from hero
 	{
 		if (newHp > 0)
 		{
@@ -43,7 +43,7 @@ public class Hero
 		}
 	}
 	
-	public void SetAttack(int newAttack)
+	public void SetAttack(int newAttack) //set attack of hero
 	{
 		if (newAttack >= 0)
 		{
@@ -51,7 +51,7 @@ public class Hero
 		}
 	}
 
-	public void AddAttack(int newAttack)
+	public void AddAttack(int newAttack) //add attack to hero
 	{
 		if (newAttack > 0)
 		{
@@ -59,7 +59,7 @@ public class Hero
 		}
 	}
 
-	public void RemoveAttack(int newAttack)
+	public void RemoveAttack(int newAttack) //subtract attack from hero
 	{
 		if (newAttack > 0)
 		{
@@ -67,7 +67,7 @@ public class Hero
 		}
 	}
 	
-	public void SetMana(int newMana)
+	public void SetMana(int newMana) //set current mana of hero(start of turn)
 	{
 		if (newMana >= 0)
 		{
@@ -75,7 +75,7 @@ public class Hero
 		}
 	}
 
-	public void AddMana(int newMana)
+	public void AddMana(int newMana) //add to current mana of hero
 	{
 		if (newMana > 0)
 		{
@@ -83,7 +83,7 @@ public class Hero
 		}
 	}
 
-	public void RemoveMana(int newMana)
+	public void RemoveMana(int newMana) //subtract from current mana of hero (playing a card)
 	{
 		if (newMana > 0)
 		{
@@ -91,7 +91,7 @@ public class Hero
 		}
 	}
 
-	public void SetMaxMana(int newMaxMana)
+	public void SetMaxMana(int newMaxMana) //set maximum of mana of hero (add 1 each turn)
 	{
 		if (newMaxMana >= 0 && newMaxMana < _maxMaxMana)
 		{
@@ -99,7 +99,7 @@ public class Hero
 		}
 	}
 
-	public void AddMaxMana(int newMaxMana)
+	public void AddMaxMana(int newMaxMana) //add to maximum mana of hero
 	{
 		if (newMaxMana > 0)
 		{
@@ -107,7 +107,7 @@ public class Hero
 		}
 	}
 
-	public void RemoveMaxMana(int newMaxMana)
+	public void RemoveMaxMana(int newMaxMana) //subtract from maximum mana of hero
 	{
 		if (newMaxMana > 0)
 		{
