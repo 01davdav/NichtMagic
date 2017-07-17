@@ -16,14 +16,14 @@ public class Hero
 	private static Boolean _mayattack;
 	private static string  _name;
 	
-	public Hero(int newHp, int newAttack, int newMaxMana)
+	public Hero(int newHp, int newAttack, int newMaxMana) //create new Hero object
 	{
 		SetHp(newHp);
 		SetAttack(newAttack);
 		SetMana(newMaxMana);
 	}
 
-	public static void SetName(string newName)
+	public static void SetName(string newName) //set the name of the hero, cant be null and empty
 	{
 		if (!String.IsNullOrEmpty(newName))
 		{
@@ -31,7 +31,7 @@ public class Hero
 		}
 	}
 
-	public static void SetMayAttack(Boolean newMayAttack)
+	public static void SetMayAttack(Boolean newMayAttack) //see if hero may attack, true - able, false - not able
 	{
 		_mayattack = newMayAttack;
 	}
