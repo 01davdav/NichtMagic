@@ -6,142 +6,132 @@ using UnityEngine;
 public class Hero : MonoBehaviour
 {
 
-	private int hp;
-	private int attack;
-	private int mana;
-	private int maxMana;
-	private int maxMaxMana = 15;
+	private int _hp;
+	private int _attack;
+	private int _mana;
+	private int _maxMana;
+	private int _maxMaxMana = 15;
 	
 	public Hero(int newHp, int newAttack, int newMaxMana)
 	{
-		setHp(newHp);
-		setAttack(newAttack);
-		setMana(newMaxMana);
+		SetHp(newHp);
+		SetAttack(newAttack);
+		SetMana(newMaxMana);
 	}
 
-	public void setHp(int newHp)
+	public void SetHp(int newHp)
 	{
 		if (newHp >= 0)
 		{
-			hp = newHp;
+			_hp = newHp;
 		}
 	}
 
-	public void addHp(int newHp)
+	public void AddHp(int newHp)
 	{
 		if (newHp > 0)
 		{
-			hp += newHp;
+			_hp += newHp;
 		}
 	}
 
-	public void removeHp(int newHp)
+	public void RemoveHp(int newHp)
 	{
 		if (newHp > 0)
 		{
-			hp -= newHp;
+			_hp -= newHp;
 		}
 	}
 	
-	public void setAttack(int newAttack)
+	public void SetAttack(int newAttack)
 	{
 		if (newAttack >= 0)
 		{
-			attack = newAttack;
+			_attack = newAttack;
 		}
 	}
 
-	public void addAttack(int newAttack)
+	public void AddAttack(int newAttack)
 	{
 		if (newAttack > 0)
 		{
-			attack += newAttack;
+			_attack += newAttack;
 		}
 	}
 
-	public void removeAttack(int newAttack)
+	public void RemoveAttack(int newAttack)
 	{
 		if (newAttack > 0)
 		{
-			attack -= newAttack;
+			_attack -= newAttack;
 		}
 	}
 	
-	public void setMana(int newMana)
+	public void SetMana(int newMana)
 	{
 		if (newMana >= 0)
 		{
-			mana = newMana;
+			_mana = newMana;
 		}
 	}
 
-	public void addMana(int newMana)
+	public void AddMana(int newMana)
 	{
 		if (newMana > 0)
 		{
-			mana += newMana;
+			_mana += newMana;
 		}
 	}
 
-	public void removeMana(int newMana)
+	public void RemoveMana(int newMana)
 	{
 		if (newMana > 0)
 		{
-			mana -= newMana;
+			_mana -= newMana;
 		}
 	}
 
-	public void setMaxMana(int newMaxmana)
+	public void SetMaxMana(int newMaxMana)
 	{
-		if (newMaxmana >= 0 && newMaxmana < maxMaxMana)
+		if (newMaxMana >= 0 && newMaxMana < _maxMaxMana)
 		{
-			maxMana = newMaxmana;
+			_maxMana = newMaxMana;
 		}
 	}
 
-	public void addMaxMana(int newMaxmana)
+	public void AddMaxMana(int newMaxMana)
 	{
-		if (newMaxmana > 0)
+		if (newMaxMana > 0)
 		{
-			maxMana += newMaxmana;
+			_maxMana += newMaxMana;
 		}
 	}
 
-	public void removeMaxMana(int newMaxmana)
+	public void RemoveMaxMana(int newMaxMana)
 	{
-		if (newMaxmana > 0)
+		if (newMaxMana > 0)
 		{
-			maxMana -= newMaxmana;
+			_maxMana -= newMaxMana;
 		}
 	}
 
-	public int getMaxMana()
+	public int GetMaxMana()
 	{
-		return maxMana;
+		return _maxMana;
 	}
 	
-	public int getHp()
+	public int GetHp()
 	{
-		return hp;
+		return _hp;
 	}
 
-	public int getAttack()
+	public int GetAttack()
 	{
-		return attack;
+		return _attack;
 	}
 
-	public int getMana()
+	public int GetMana()
 	{
-		return mana;
-	}
-	
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+		return _mana;
 	}
 }

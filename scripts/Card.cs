@@ -3,194 +3,194 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Card : MonoBehaviour
+public class Card
 {
-	private String name;
-	private int manacosts;
-	private int attack;
-	private int life;
-	private int shield;
-	private int currentShield;
-	private Boolean breakable = true;
+	private String _name;
+	private int _manacosts;
+	private int _attack;
+	private int _life;
+	private int _shield;
+	private int _currentShield;
+	private Boolean _breakable = true;
 	
 	public Card(String newName, int newManacosts, int newAttack, int newLife, int newShield)
 	{
-		setName(newName);
-		setManacosts(newManacosts);
-		setAttack(newAttack);
-		setLife(newLife);
-		setShield(newShield);
+		SetName(newName);
+		SetManacosts(newManacosts);
+		SetAttack(newAttack);
+		SetLife(newLife);
+		SetShield(newShield);
 	}
 
-	public void setName(String newName)
+	public void SetName(String newName)
 	{
-		if(name != null)
-		name = newName;
+		if(newName != null)
+		_name = newName;
 	}
 
-	public void setManacosts(int newManacosts)
+	public void SetManacosts(int newManacosts)
 	{
 		if (newManacosts >= 0)
 		{
-			manacosts = newManacosts;
+			_manacosts = newManacosts;
 		}
 	}
 
-	public void addManacosts(int newManacosts)
+	public void AddManacosts(int newManacosts)
 	{
 		if (newManacosts > 0)
 		{
-			manacosts += newManacosts;
+			_manacosts += newManacosts;
 		}
 	}
 
-	public void removeManacosts(int newManacosts)
+	public void RemoveManacosts(int newManacosts)
 	{
 		if (newManacosts > 0)
 		{
-			manacosts -= newManacosts;
+			_manacosts -= newManacosts;
 		}
 	}
 
-	public void setAttack(int newAttack)
+	public void SetAttack(int newAttack)
 	{
 		if (newAttack >= 0)
 		{
-			attack = newAttack;
+			_attack = newAttack;
 		}
 	}
 
-	public void addAttack(int newAttack)
+	public void AddAttack(int newAttack)
 	{
 		if (newAttack > 0)
 		{
-			attack += newAttack;
+			_attack += newAttack;
 		}
 	}
 
-	public void removeAttack(int newAttack)
+	public void RemoveAttack(int newAttack)
 	{
 		if (newAttack > 0)
 		{
-			attack -= newAttack;
+			_attack -= newAttack;
 		}
 	}
 
-	public void setLife(int newLife)
+	public void SetLife(int newLife)
 	{
 		if (newLife >= 0)
 		{
-			life = newLife;
+			_life = newLife;
 		}
 	}
 
-	public void addLife(int newLife)
+	public void AddLife(int newLife)
 	{
 		if (newLife > 0)
 		{
-			life += newLife;
+			_life += newLife;
 		}
 	}
 
-	public void removeLife(int newLife)
+	public void RemoveLife(int newLife)
 	{
 		if (newLife > 0)
 		{
-			life -= newLife;
+			_life -= newLife;
 		}
 	}
 
-	public void setShield(int newShield)
+	public void SetShield(int newShield)
 	{
 		if (newShield >= 0)
 		{
-			shield = newShield;
+			_shield = newShield;
 		}
 	}
 
-	public void addShield(int newShield)
+	public void AddShield(int newShield)
 	{
 		if (newShield > 0)
 		{
-			shield += newShield;
+			_shield += newShield;
 		}
 	}
 
-	public void removeShield(int newShield)
+	public void RemoveShield(int newShield)
 	{
 		if (newShield > 0)
 		{
-			shield -= newShield;
+			_shield -= newShield;
 		}
 	}
 
-	public void setBreakable(Boolean newBreakable)
+	public void SetBreakable(Boolean newBreakable)
 	{
-		breakable = newBreakable;
+		_breakable = newBreakable;
 	}
 
-	public void setCurrentShield(int newCurrentShield)
+	public void SetCurrentShield(int newCurrentShield)
 	{
 		if (newCurrentShield >= 0)
 		{
-			currentShield = newCurrentShield;
+			_currentShield = newCurrentShield;
 		}
 	}
 
-	public void addCurrentShield(int newCurrentShield)
+	public void AddCurrentShield(int newCurrentShield)
 	{
 		if (newCurrentShield > 0)
 		{
-			currentShield += newCurrentShield;
+			_currentShield += newCurrentShield;
 		}
 	}
 
-	public void removeCurrentShield(int newCurrentShield)
+	public void RemoveCurrentShield(int newCurrentShield)
 	{
 		if (newCurrentShield > 0)
 		{
-			currentShield -= newCurrentShield;
+			_currentShield -= newCurrentShield;
 		}
 	}
 
-	public int getManacosts()
+	public int GetManacosts()
 	{
-		return manacosts;
+		return _manacosts;
 	}
 
-	public int getAttack()
+	public int GetAttack()
 	{
-		return attack;
+		return _attack;
 	}
 
-	public int getLife()
+	public int GetLife()
 	{
-		return life;
+		return _life;
 	}
 	
-	public string getName()
+	public string GetName()
 	{
-		return name;
+		return _name;
 	}
 
-	public int getShield()
+	public int GetShield()
 	{
-		return shield;
+		return _shield;
 	}
 
-	public Boolean getBreakable()
+	public Boolean GetBreakable()
 	{
-		return breakable;
+		return _breakable;
 	}
 
-	public int getCurrentShield()
+	public int GetCurrentShield()
 	{
-		return currentShield;
+		return _currentShield;
 	}
 	
-	// Use this for initialization
-	void Start () 
+	//for testing
+	public static Card GetRandomCard()
 	{
-		
+		return new Card(Control.GetRandomName(), 0, 0, 0, 0);
 	}
 }

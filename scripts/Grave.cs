@@ -2,17 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Grave : MonoBehaviour {
+public class Grave {
 
-	List<Card> Gravejard = new List<Card>();
-	
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+	public static List<Card> Graveyard = new List<Card>();
 }
