@@ -12,6 +12,6 @@ public class ReadJson
 
 	public static Card GetCard(int id)
 	{
-		return new Card((string)_cardData["Cards"][0]["name"],(int)_cardData["Cards"][0]["cost"],(int)_cardData["Cards"][0]["attack"],(int)_cardData["Cards"][0]["life"],(int)_cardData["Cards"][0]["shield"],(string)_cardData["Cards"][0]["path"]);
+		return new Card((string)_cardData["Cards"][id]["name"],(int)_cardData["Cards"][id]["cost"],(int)_cardData["Cards"][id]["attack"],(int)_cardData["Cards"][id]["life"],(int)_cardData["Cards"][id]["shield"],(string)_cardData["Cards"][id]["path"]);
 	}
 }
