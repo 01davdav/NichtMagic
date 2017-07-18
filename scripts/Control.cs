@@ -14,6 +14,7 @@ public class Control : MonoBehaviour {
 	private Player P;
 	private ReadJson R;
 	private Grave G;
+	private Board B;
 	
 	// Use this for initialization
 	void Start ()
@@ -105,5 +106,13 @@ public class Control : MonoBehaviour {
 			yield return null;
 		}
 		transform.rotation = Quaternion.Euler(0, 0, 0);
+	}
+	
+	[SerializeField]
+	private UnityEngine.UI.Text _counter;
+	
+	public void Pop()
+	{
+		_counter.text = P.Deck.Count.ToString();
 	}
 }

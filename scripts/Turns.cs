@@ -28,13 +28,13 @@ public class Turns : MonoBehaviour {
 		
 		//end of turn
 		
-		foreach (Card c in B.BoardCards) //set shield back to max value
-		{
-			if (c != null && c.GetCurrentShield() > 0)
-			{
-				c.SetCurrentShield(c.GetShield());
-			}
-		}
+		//foreach (GameObjectCa c in B.BoardCards) //set shield back to max value
+		//{
+		//	if (c != null && c.GetCurrentShield() > 0)
+		//	{
+		//		c.SetCurrentShield(c.GetShield());
+		//	}
+		//}
 	}
 	
 
