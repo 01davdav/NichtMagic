@@ -76,6 +76,7 @@ public class Control : MonoBehaviour {
 		Debug.Log(card.GetComponent<Card>().GetName());
 		G.Graveyard.Add(card);
 		P.Deck.Remove(P.Deck[0]);
+		G.Pop();
 	}
 	
 	public IEnumerator MoveToPosition(Transform transform, Vector3 position, float timeToMove, float back)
