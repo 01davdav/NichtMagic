@@ -5,7 +5,7 @@ using UnityEngine;
 using LitJson;
 
 public class WriteJson : MonoBehaviour {
-	public Character Deck = new Character(0, new int[]{0,0,0,0,0,1,1,1});
+	public Character Deck = new Character(new int[]{0,0,0,0,0,1,1,1});
 	private JsonData deckJson;
 	
 	
