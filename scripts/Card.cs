@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-public class Card
+public class Card : MonoBehaviour
 {
 	private static String _name;
 	private static int _manacosts;
@@ -16,6 +16,16 @@ public class Card
 	private static String _texturePath;
 	
 	public Card(String newName, int newManacosts, int newAttack, int newLife, int newShield, String newTexturePath) //create new Creature Card object
+	{
+		SetName(newName);
+		SetManacosts(newManacosts);
+		SetAttack(newAttack);
+		SetLife(newLife);
+		SetShield(newShield);
+		SetPath(newTexturePath);
+	}
+	
+	public void SetCard(String newName, int newManacosts, int newAttack, int newLife, int newShield, String newTexturePath) //create new Creature Card object
 	{
 		SetName(newName);
 		SetManacosts(newManacosts);
@@ -192,6 +202,11 @@ public class Card
 	public int GetShield()
 	{
 		return _shield;
+	}
+	
+	public string GetPath()
+	{
+		return _texturePath;
 	}
 
 	public Boolean GetBreakable()

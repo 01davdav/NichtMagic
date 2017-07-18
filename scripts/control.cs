@@ -58,11 +58,13 @@ public class Control : MonoBehaviour {
 		return name;
 	}
 
-	public static void InstantiateHandCard(Card card, int c, String tag)
+	public static void InstantiateHandCard(Card card, int c)
 	{
 		double height = Camera.main.orthographicSize * 2.0;
 		float fheight = (float)height;
-		GameObject myHandcard = Instantiate(Handcard, new Vector3((c*2)-5, -(fheight/2)+2, 0), Handcard.transform.rotation);
-		myHandcard.tag = tag;
+		GameObject myCard = Instantiate(Handcard, new Vector3((c*2)-5, -(fheight/2)+2, 0), Handcard.transform.rotation);
+		myCard.AddComponent<Card>();
+		myCard.GetComponent<Card>().SetCard(card.GetName(),card.GetManacosts(),card.GetAttack(),card.GetLife(),card.GetShield(),card.GetPath());
+		Player.Hand[c] = myCard;
 	}
 }

@@ -8,7 +8,7 @@ public class Player
 {
 
 	//Initializing
-	public static Card[] Hand = new Card[6];
+	public static GameObject[] Hand = new GameObject[6];
 	public static List<Card> Deck = new List<Card>();
 
 	//Method for drawing a card
@@ -24,8 +24,7 @@ public class Player
 			}
 			if (Hand[c] == null)
 			{
-				Hand[c] = Deck[0];
-				Control.InstantiateHandCard(Hand[c],c,"H"+c);
+				Control.InstantiateHandCard(Deck[c],c);
 				Deck.Remove(Deck[0]);
 				break;
 			}
