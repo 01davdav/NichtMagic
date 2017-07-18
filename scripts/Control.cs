@@ -106,4 +106,12 @@ public class Control : MonoBehaviour {
 		}
 		transform.rotation = Quaternion.Euler(0, 0, 0);
 	}
+	
+	[SerializeField]
+	private UnityEngine.UI.Text _counter;
+	
+	public void Pop()
+	{
+		_counter.text = P.Deck.Count.ToString();
+	}
 }

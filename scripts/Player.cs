@@ -45,7 +45,9 @@ public class Player
 				break;
 			}
 		}
+		C.Pop();
 	}
+	
 	
 	//for testing
 	public void GetRandomCard(GameObject card)
