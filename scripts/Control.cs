@@ -14,6 +14,7 @@ public class Control : MonoBehaviour {
 	private Player P;
 	private ReadJson R;
 	private Grave G;
+	private Board B;
 	
 	// Use this for initialization
 	void Start ()

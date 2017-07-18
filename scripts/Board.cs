@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class Board{
     
-    public Card[] BoardCards= new Card[8];
+    public GameObject[] BoardCards= new GameObject[8];
 }
