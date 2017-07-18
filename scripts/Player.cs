@@ -11,15 +11,13 @@ public class Player
 	public GameObject[] Hand = new GameObject[6];
 	public List<GameObject> Deck = new List<GameObject>();
 
-	private Grave G;
 	private Control C;
 
 
 	public void Start()
 	{
-		if (G == null)
+		if (C == null)
 		{
-			G = Camera.main.GetComponent<Grave>();
 			C = Camera.main.GetComponent<Control>();
 		}
 	}
@@ -41,13 +39,12 @@ public class Player
 		{
 			if (c == 6)
 			{
-				G.Graveyard.Add(Deck[0]);
-				Deck.Remove(Deck[0]);
+				C.MoveCardToGrave(Deck[0]);
 				break;
 			}
 			if (Hand[c] == null)
 			{
-				C.MoveCard(Deck[0],c);
+				C.MoveCardToHand(Deck[0],c);
 				break;
 			}
 		}

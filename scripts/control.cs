@@ -13,6 +13,7 @@ public class Control : MonoBehaviour {
 
 	private Player P;
 	private ReadJson R;
+	private Grave G;
 	
 	// Use this for initialization
 	void Start ()
@@ -20,12 +21,13 @@ public class Control : MonoBehaviour {
 		//Initializing and Start methods
 		P = Camera.main.GetComponent<Main>().MPlayer;
 		R = Camera.main.GetComponent<Main>().MReadJson;
+		G = Camera.main.GetComponent<Grave>();
 		P.Start();
 		R.Start();
 		//get 50 random cards [only for testing]
 		for (int co = 0; co < 50; co++)
 		{
-			GameObject thisCard = Instantiate(PreCard, new Vector3(7.91f, -2.31f, -1f), PreCard.transform.rotation);
+			GameObject thisCard = Instantiate(PreCard, new Vector3(7.91f, -2.31f, -.1f), Quaternion.Euler(0,180,90));
 			P.GetRandomCard(thisCard);
 			P.Deck.Add(thisCard);
 		}
@@ -56,16 +58,60 @@ public class Control : MonoBehaviour {
 		return name;
 	}
 
-	public void MoveCard(GameObject card, int c)
+	public void MoveCardToHand(GameObject card, int c)
 	{
 		double height = Camera.main.orthographicSize * 2.0;
 		float fheight = (float)height;
 
 		if(card.GetComponent<Card>().GetPath() != "path")
 			card.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(card.GetComponent<Card>().GetPath());
-		card.transform.localPosition = new Vector3((c * 2) - 5, -(fheight / 2) + 2, 0);
+		StartCoroutine(RotateToPosition(card.transform,new Vector3(-3, -3, 0), 0));
+		StartCoroutine(MoveToPosition(card.transform, new Vector3((c * 2) - 5, -(fheight / 2) + 2, -1), .5f));
 		Debug.Log(card.GetComponent<Card>().GetName());
 		P.Hand[c] = card;
 		P.Deck.Remove(P.Deck[0]);
+	}
+	
+	public void MoveCardToGrave(GameObject card)
+	{
+		double height = Camera.main.orthographicSize * 2.0;
+		float fheight = (float)height;
+
+		if(card.GetComponent<Card>().GetPath() != "path")
+			card.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(card.GetComponent<Card>().GetPath());
+		StartCoroutine(RotateToPosition(card.transform,new Vector3(-3, -3, 0), 0));
+		StartCoroutine(MoveToPosition(card.transform, new Vector3(10.5f, -(fheight / 2) + 2, -1), .5f));
+		Debug.Log(card.GetComponent<Card>().GetName());
+		G.Graveyard.Add(card);
+		P.Deck.Remove(P.Deck[0]);
+	}
+	
+	public IEnumerator MoveToPosition(Transform transform, Vector3 position, float timeToMove)
+	{
+		var currentPos = transform.position;
+		var t = 0f;
+		while(t < 1)
+		{
+			t += Time.deltaTime / timeToMove;
+			transform.position = Vector3.Lerp(currentPos, position, t);
+			yield return null;
+		}	
+		t = 0f;
+		while(t < 1)
+		{
+			t += Time.deltaTime / 0.1f;
+			transform.position = Vector3.Lerp(position, position+new Vector3(0,0,1), t);
+			yield return null;
+		}
+		
+	}
+	
+	public IEnumerator RotateToPosition(Transform transform,Vector3 axis, int to)
+	{
+		while(transform.rotation.y > to)
+		{
+			transform.Rotate (axis);
+			yield return null;
+		}
 	}
 }
