@@ -16,10 +16,7 @@ public class Player
 
 	public void Start()
 	{
-		if (C == null)
-		{
-			C = Camera.main.GetComponent<Control>();
-		}
+		C = Camera.main.GetComponent<Control>();
 	}
 	
 	//Drawing the first five cards
