@@ -23,6 +23,7 @@ public class Control : MonoBehaviour {
 		R = Camera.main.GetComponent<ReadJson>();
 		G = Camera.main.GetComponent<Grave>();
 		P.Start();
+		R.Start();
 		//get 50 random cards [only for testing]
 		for (int co = 0; co < 50; co++)
 		{
