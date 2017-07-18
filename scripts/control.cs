@@ -10,49 +10,41 @@ public class Control : MonoBehaviour {
 	
 	//Initializing the handcard obj
 	public GameObject PreCard;
-	[SerializeField]
-	public GameObject Hh;
-	
-	public Texture2D test;
-	[SerializeField] 
-	public Texture2D tt;
+
+	private Player P;
+	private ReadJson R;
 	
 	// Use this for initialization
 	void Start ()
 	{
-		//set handcard gameobject
-		PreCard = Hh;
-		test = tt;
+		//Initializing and Start methods
+		P = Camera.main.GetComponent<Main>().MPlayer;
+		R = Camera.main.GetComponent<Main>().MReadJson;
+		P.Start();
+		R.Start();
 		//get 50 random cards [only for testing]
 		for (int co = 0; co < 50; co++)
 		{
-			GameObject thisCard = Instantiate(PreCard);
-			Player.Deck.Add(thisCard);
-		}
-		Player.Deck[23].GetComponent<Card>().SetName("Hernals");
-		for (int c = 0; c < 50; c++)
-		{
-			Debug.Log(Player.Deck[c].GetComponent<Card>().GetName());
+			GameObject thisCard = Instantiate(PreCard, new Vector3(7.91f, -2.31f, -1f), PreCard.transform.rotation);
+			P.GetRandomCard(thisCard);
+			P.Deck.Add(thisCard);
 		}
 		//Shuffling the Deck
-		for (int i = 0; i < Player.Deck.Count; i++) {
-			GameObject temp = Player.Deck[i];
-			int randomIndex = Random.Range(i, Player.Deck.Count);
-			Player.Deck[i] = Player.Deck[randomIndex];
-			Player.Deck[randomIndex] = temp;
+		for (int i = 0; i < P.Deck.Count; i++) {
+			GameObject temp = P.Deck[i];
+			int randomIndex = Random.Range(i, P.Deck.Count);
+			P.Deck[i] = P.Deck[randomIndex];
+			P.Deck[randomIndex] = temp;
 		}
-		//Drawing the first four cards
-		StartCoroutine(Draw4());
-	}
-
-	//Drawing the first five cards
-	IEnumerator Draw4()
-	{
-		for (int c = 0; c < 4; c++)
+		R.GetCard(P.Deck[0],0);
+		R.GetCard(P.Deck[1],1);
+		for (int c = 49; c >= 0; c--)
 		{
-			yield return new WaitForSeconds(0.2f);
-			Player.Draw();
+			Debug.Log(P.Deck[c].GetComponent<Card>().GetName());
 		}
+		Debug.Log("--------");
+		//Drawing the first four cards
+		StartCoroutine(P.Draw4());
 	}
 	
 	//random name generator [for testing]
@@ -64,21 +56,16 @@ public class Control : MonoBehaviour {
 		return name;
 	}
 
-	public void InstantiateHandCard(GameObject card, int c)
+	public void MoveCard(GameObject card, int c)
 	{
 		double height = Camera.main.orthographicSize * 2.0;
 		float fheight = (float)height;
-		GameObject myCard = Instantiate(PreCard, new Vector3((c*2)-5, -(fheight/2)+2, 0), PreCard.transform.rotation);
-		myCard = card;
-		Debug.Log(myCard.GetComponent<Card>().GetName());
-		Player.Hand[c] = myCard;
-	}
-	
-	public void InstantiateCard(GameObject card)
-	{
-		double height = Camera.main.orthographicSize * 2.0;
-		float fheight = (float)height;
-		GameObject myCard = Instantiate(PreCard);
-		myCard = card;
+
+		if(card.GetComponent<Card>().GetPath() != "path")
+			card.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(card.GetComponent<Card>().GetPath());
+		card.transform.localPosition = new Vector3((c * 2) - 5, -(fheight / 2) + 2, 0);
+		Debug.Log(card.GetComponent<Card>().GetName());
+		P.Hand[c] = card;
+		P.Deck.Remove(P.Deck[0]);
 	}
 }

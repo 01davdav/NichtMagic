@@ -11,6 +11,29 @@ public class Player
 	public GameObject[] Hand = new GameObject[6];
 	public List<GameObject> Deck = new List<GameObject>();
 
+	private Grave G;
+	private Control C;
+
+
+	public void Start()
+	{
+		if (G == null)
+		{
+			G = Camera.main.GetComponent<Grave>();
+			C = Camera.main.GetComponent<Control>();
+		}
+	}
+	
+	//Drawing the first five cards
+	public IEnumerator Draw4()
+	{
+		for (int c = 0; c < 4; c++)
+		{
+			yield return new WaitForSeconds(0.2f);
+			Draw();
+		}
+	}
+	
 	//Method for drawing a card
 	public void Draw()
 	{
@@ -18,14 +41,13 @@ public class Player
 		{
 			if (c == 6)
 			{
-				Grave.Graveyard.Add(Deck[0]);
+				G.Graveyard.Add(Deck[0]);
 				Deck.Remove(Deck[0]);
 				break;
 			}
 			if (Hand[c] == null)
 			{
-				Control.InstantiateHandCard(Deck[0],c);
-				Deck.Remove(Deck[0]);
+				C.MoveCard(Deck[0],c);
 				break;
 			}
 		}
@@ -34,6 +56,6 @@ public class Player
 	//for testing
 	public void GetRandomCard(GameObject card)
 	{
-		card.GetComponent<Card>().SetCard(Control.GetRandomName(), 0, 0, 0, 0, "path");
+		card.GetComponent<Card>().SetCard(C.GetRandomName(), 0, 0, 0, 0, "path");
 	}
 }

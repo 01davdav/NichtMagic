@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Grave {
+public class Grave : MonoBehaviour {
 
 	public List<GameObject> Graveyard = new List<GameObject>();
 }

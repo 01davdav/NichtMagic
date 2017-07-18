@@ -5,7 +5,7 @@ using System.Configuration;
 using UnityEngine;
 using UnityEngineInternal.Input;
 
-public class Hero
+public class Hero : MonoBehaviour
 {
 
 	private int _hp;
