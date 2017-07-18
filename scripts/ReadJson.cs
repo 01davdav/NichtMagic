@@ -39,6 +39,8 @@ public class ReadJson : MonoBehaviour
 			GameObject thisCard = Instantiate(C.PreCard, new Vector3(7.91f, -2.31f, -.1f), Quaternion.Euler(0,180,90));
 			GetCard(thisCard, (int)CardDataDecks["Decks"][id][c.ToString()]);
 			P.Deck.Add(thisCard);
+			if(thisCard.GetComponent<Card>().GetPath() != "path")
+				thisCard.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(thisCard.GetComponent<Card>().GetPath());
 		}
 	}
 }

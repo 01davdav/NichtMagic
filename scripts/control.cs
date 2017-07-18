@@ -29,6 +29,8 @@ public class Control : MonoBehaviour {
 			GameObject thisCard = Instantiate(PreCard, new Vector3(7.91f, -2.31f, -.1f), Quaternion.Euler(0, 180, 90));
 			R.GetCard(thisCard,Random.Range(0, R.CardDataCards["Cards"].Count));
 			P.Deck.Add(thisCard);
+			if(thisCard.GetComponent<Card>().GetPath() != "path")
+				thisCard.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(thisCard.GetComponent<Card>().GetPath());
 		}
 		//Shuffling the Deck
 		for (int i = 0; i < P.Deck.Count; i++) {
@@ -55,8 +57,6 @@ public class Control : MonoBehaviour {
 		double height = Camera.main.orthographicSize * 2.0;
 		float fheight = (float)height;
 
-		if(card.GetComponent<Card>().GetPath() != "path")
-			card.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(card.GetComponent<Card>().GetPath());
 		StartCoroutine(RotateToPosition(card.transform,new Vector3(-3, -3, 0), 0));
 		StartCoroutine(MoveToPosition(card.transform, new Vector3((c * 2) - 5, -(fheight / 2) + 2, -1), .5f, 1));
 		Debug.Log(card.GetComponent<Card>().GetName());
@@ -68,9 +68,7 @@ public class Control : MonoBehaviour {
 	{
 		double height = Camera.main.orthographicSize * 2.0;
 		float fheight = (float)height;
-
-		if(card.GetComponent<Card>().GetPath() != "path")
-			card.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(card.GetComponent<Card>().GetPath());
+		
 		StartCoroutine(RotateToPosition(card.transform,new Vector3(-3, -3, 0), 0));
 		StartCoroutine(MoveToPosition(card.transform, new Vector3(10.5f, -(fheight / 2) + 2, -(G.Graveyard.Count/10f)-1f), .5f, 4));
 		Debug.Log(card.GetComponent<Card>().GetName());
