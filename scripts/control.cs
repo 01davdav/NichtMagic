@@ -20,15 +20,14 @@ public class Control : MonoBehaviour {
 	{
 		//Initializing and Start methods
 		P = Camera.main.GetComponent<Main>().MPlayer;
-		R = Camera.main.GetComponent<Main>().MReadJson;
+		R = Camera.main.GetComponent<ReadJson>();
 		G = Camera.main.GetComponent<Grave>();
 		P.Start();
-		R.Start();
 		//get 50 random cards [only for testing]
 		for (int co = 0; co < 50; co++)
 		{
-			GameObject thisCard = Instantiate(PreCard, new Vector3(7.91f, -2.31f, -.1f), Quaternion.Euler(0,180,90));
-			P.GetRandomCard(thisCard);
+			GameObject thisCard = Instantiate(PreCard, new Vector3(7.91f, -2.31f, -.1f), Quaternion.Euler(0, 180, 90));
+			R.GetCard(thisCard,Random.Range(0, R.CardDataCards["Cards"].Count));
 			P.Deck.Add(thisCard);
 		}
 		//Shuffling the Deck
@@ -38,13 +37,6 @@ public class Control : MonoBehaviour {
 			P.Deck[i] = P.Deck[randomIndex];
 			P.Deck[randomIndex] = temp;
 		}
-		R.GetCard(P.Deck[0],0);
-		R.GetCard(P.Deck[1],1);
-		for (int c = 49; c >= 0; c--)
-		{
-			Debug.Log(P.Deck[c].GetComponent<Card>().GetName());
-		}
-		Debug.Log("--------");
 		//Drawing the first four cards
 		StartCoroutine(P.Draw4());
 	}
@@ -66,7 +58,7 @@ public class Control : MonoBehaviour {
 		if(card.GetComponent<Card>().GetPath() != "path")
 			card.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(card.GetComponent<Card>().GetPath());
 		StartCoroutine(RotateToPosition(card.transform,new Vector3(-3, -3, 0), 0));
-		StartCoroutine(MoveToPosition(card.transform, new Vector3((c * 2) - 5, -(fheight / 2) + 2, -1), .5f));
+		StartCoroutine(MoveToPosition(card.transform, new Vector3((c * 2) - 5, -(fheight / 2) + 2, -1), .5f, 1));
 		Debug.Log(card.GetComponent<Card>().GetName());
 		P.Hand[c] = card;
 		P.Deck.Remove(P.Deck[0]);
@@ -80,13 +72,13 @@ public class Control : MonoBehaviour {
 		if(card.GetComponent<Card>().GetPath() != "path")
 			card.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(card.GetComponent<Card>().GetPath());
 		StartCoroutine(RotateToPosition(card.transform,new Vector3(-3, -3, 0), 0));
-		StartCoroutine(MoveToPosition(card.transform, new Vector3(10.5f, -(fheight / 2) + 2, -1), .5f));
+		StartCoroutine(MoveToPosition(card.transform, new Vector3(10.5f, -(fheight / 2) + 2, -(G.Graveyard.Count/10f)-1f), .5f, 4));
 		Debug.Log(card.GetComponent<Card>().GetName());
 		G.Graveyard.Add(card);
 		P.Deck.Remove(P.Deck[0]);
 	}
 	
-	public IEnumerator MoveToPosition(Transform transform, Vector3 position, float timeToMove)
+	public IEnumerator MoveToPosition(Transform transform, Vector3 position, float timeToMove, float back)
 	{
 		var currentPos = transform.position;
 		var t = 0f;
@@ -100,10 +92,9 @@ public class Control : MonoBehaviour {
 		while(t < 1)
 		{
 			t += Time.deltaTime / 0.1f;
-			transform.position = Vector3.Lerp(position, position+new Vector3(0,0,1), t);
+			transform.position = Vector3.Lerp(position, position+new Vector3(0,0,back), t);
 			yield return null;
 		}
-		
 	}
 	
 	public IEnumerator RotateToPosition(Transform transform,Vector3 axis, int to)
@@ -113,5 +104,6 @@ public class Control : MonoBehaviour {
 			transform.Rotate (axis);
 			yield return null;
 		}
+		transform.rotation = Quaternion.Euler(0, 0, 0);
 	}
 }
