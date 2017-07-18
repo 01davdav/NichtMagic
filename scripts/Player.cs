@@ -8,11 +8,11 @@ public class Player
 {
 
 	//Initializing
-	public static GameObject[] Hand = new GameObject[6];
-	public static List<Card> Deck = new List<Card>();
+	public GameObject[] Hand = new GameObject[6];
+	public List<GameObject> Deck = new List<GameObject>();
 
 	//Method for drawing a card
-	public static void Draw()
+	public void Draw()
 	{
 		for (int c = 0; c < 7; c++)
 		{
@@ -24,11 +24,16 @@ public class Player
 			}
 			if (Hand[c] == null)
 			{
-				Control.InstantiateHandCard(Deck[c],c);
+				Control.InstantiateHandCard(Deck[0],c);
 				Deck.Remove(Deck[0]);
 				break;
 			}
 		}
-		
+	}
+	
+	//for testing
+	public void GetRandomCard(GameObject card)
+	{
+		card.GetComponent<Card>().SetCard(Control.GetRandomName(), 0, 0, 0, 0, "path");
 	}
 }

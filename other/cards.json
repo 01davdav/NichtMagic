@@ -6,7 +6,7 @@
       "attack" : 1,
       "life" : 4,
       "shield" : 3,
-      "path" : "/h/s"
+      "path" : "creatures/testerus_cardus"
     },
     {
       "name" : "testerus cardus Mark2",
@@ -14,7 +14,7 @@
       "attack" : 2,
       "life" : 4,
       "shield" : 5,
-      "path" : "/h/s"
+      "path" : "creatures/testerus_cardus_Mark2"
     }
   ]
 }

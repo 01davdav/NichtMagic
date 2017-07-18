@@ -3,17 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Card : MonoBehaviour
 {
-	private static String _name;
-	private static int _manacosts;
-	private static int _attack;
-	private static int _life;
-	private static int _shield;
-	private static int _currentShield;
-	private static Boolean _breakable = true;
-	private static String _texturePath;
+	private String _name;
+	private int _manacosts;
+	private int _attack;
+	private int _life;
+	private int _shield;
+	private int _currentShield;
+	private Boolean _breakable = true;
+	private String _texturePath;
 	
 	public Card(String newName, int newManacosts, int newAttack, int newLife, int newShield, String newTexturePath) //create new Creature Card object
 	{
@@ -217,11 +218,5 @@ public class Card : MonoBehaviour
 	public int GetCurrentShield()
 	{
 		return _currentShield;
-	}
-	
-	//for testing
-	public static Card GetRandomCard()
-	{
-		return new Card(Control.GetRandomName(), 0, 0, 0, 0, "path");
 	}
 }

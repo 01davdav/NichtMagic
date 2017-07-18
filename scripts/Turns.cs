@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Turns{
 
-	public static void Turn()
+	public void Turn()
 	{
 		//start of turn
 		

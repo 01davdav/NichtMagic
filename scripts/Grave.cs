@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class Grave {
 
-	public static List<Card> Graveyard = new List<Card>();
+	public List<GameObject> Graveyard = new List<GameObject>();
 }
