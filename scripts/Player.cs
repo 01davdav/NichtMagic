@@ -18,6 +18,7 @@ public class Player
 	public void Start()
 	{
 		C = Camera.main.GetComponent<Control>();
+		B = Camera.main.GetComponent<Board>();
 	}
 	
 	//Drawing the first five cards
@@ -51,19 +52,12 @@ public class Player
 
 	public void PlayCard()
 	{
-		for (int c = 0; c < 9; c++)
+		int i = B.BoardCards.Length;
+
+		if (i == 0)
 		{
-			if (B.BoardCards[c] == null)
-			{
-				if (Hand[0] != null)
-				{
-					Debug.Log(Hand[0].GetComponent<Card>().GetName());
-					C.MoveCardToBoard(Hand[0], c);
-					break;
-				}
-			}
+			C.MoveCardToBoard(Hand[0], 4);
 		}
-		
 	}
 	
 	
