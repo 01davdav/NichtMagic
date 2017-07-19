@@ -12,7 +12,6 @@ public class Player
 	public List<GameObject> Deck = new List<GameObject>();
 
 	private Control C;
-	private Board B;
 
 
 	public void Start()
@@ -47,16 +46,6 @@ public class Player
 			}
 		}
 		C.Pop();
-	}
-
-	public void PlayCard()
-	{
-		int i = B.BoardCards.Length;
-
-		if (i == 0)
-		{
-			C.MoveCardToBoard(Hand[0], 4);
-		}
 	}
 	
 	
