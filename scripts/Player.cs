@@ -47,11 +47,14 @@ public class Player
 		}
 		C.Pop();
 	}
-	
-	
-	//for testing
-	public void GetRandomCard(GameObject card)
+
+	public int[] getDeckIds()
 	{
-		card.GetComponent<Card>().SetCard(C.GetRandomName(), 0, 0, 0, 0, "path");
+		int[] deckIds = new int[Deck.Count];
+		for (int c = 0; c < deckIds.Length; c++)
+		{
+			deckIds[c] = Deck[c].GetComponent<Card>().GetId();
+		}
+		return deckIds;
 	}
 }

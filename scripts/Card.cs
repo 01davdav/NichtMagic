@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,8 +16,10 @@ public class Card : MonoBehaviour
 	private int _currentShield;
 	private Boolean _breakable = true;
 	private String _texturePath;
+
+	private int _id;
 	
-	public Card(String newName, int newManacosts, int newAttack, int newLife, int newShield, String newTexturePath) //create new Creature Card object
+	public Card(String newName, int newManacosts, int newAttack, int newLife, int newShield, String newTexturePath, int newId) //create new Creature Card object
 	{
 		SetName(newName);
 		SetManacosts(newManacosts);
@@ -24,9 +27,10 @@ public class Card : MonoBehaviour
 		SetLife(newLife);
 		SetShield(newShield);
 		SetPath(newTexturePath);
+		SetId(newId);
 	}
 	
-	public void SetCard(String newName, int newManacosts, int newAttack, int newLife, int newShield, String newTexturePath) //create new Creature Card object
+	public void SetCard(String newName, int newManacosts, int newAttack, int newLife, int newShield, String newTexturePath, int newId) //create new Creature Card object
 	{
 		SetName(newName);
 		SetManacosts(newManacosts);
@@ -34,6 +38,7 @@ public class Card : MonoBehaviour
 		SetLife(newLife);
 		SetShield(newShield);
 		SetPath(newTexturePath);
+		SetId(newId);
 	}
 
 	public Card(String newName, int newManacosts) //create new Spell Card object
@@ -180,6 +185,11 @@ public class Card : MonoBehaviour
 		}
 	}
 
+	public void SetId(int newId)
+	{
+		_id = newId;
+	}
+	
 	public int GetManacosts()
 	{
 		return _manacosts;
@@ -218,5 +228,10 @@ public class Card : MonoBehaviour
 	public int GetCurrentShield()
 	{
 		return _currentShield;
+	}
+
+	public int GetId()
+	{
+		return _id;
 	}
 }
