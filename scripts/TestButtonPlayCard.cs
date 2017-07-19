@@ -16,6 +16,6 @@ public class TestButtonPlayCard : MonoBehaviour
 
 	public void PlayACard()
 	{
-		B.PlayCard(P.Hand[0], 0);
+		B.PlayCard(P.Hand[0]);
 	}
 }

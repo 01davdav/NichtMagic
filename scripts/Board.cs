@@ -18,8 +18,10 @@ public class Board{
                 B = Camera.main.GetComponent<Main>().MBoard;
         }
         
-        public void PlayCard(GameObject card, int positionOfCardInHand)
+        public void PlayCard(GameObject card)
         {
+                card.GetComponent<Card>().Exit();
+                int positionOfCardInHand = System.Array.IndexOf(P.Hand, card);
                 int i = BoardCardLength();
                 int c = 0; //soll später die position sein wo es platziert werden soll, nur für testzwecke auf 3 gesetzt
                 

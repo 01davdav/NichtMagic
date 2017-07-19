@@ -50,6 +50,12 @@ public class Card : MonoBehaviour
 		}
 	}
 
+	public void Exit()
+	{
+		this.gameObject.transform.localScale = new Vector3(.8f, .8f, .8f);
+		this.gameObject.GetComponent<Renderer>().sortingOrder = 0;
+	}
+	
 	private void OnMouseDown()
 	{
 		if (P.Hand.Contains(this.gameObject))
