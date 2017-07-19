@@ -65,6 +65,18 @@ public class Control : MonoBehaviour {
 		P.Hand[c] = card;
 		P.Deck.Remove(P.Deck[0]);
 	}
+
+	public void MoveCardToBoard(GameObject card, int c)
+	{
+		double height = Camera.main.orthographicSize * 2.0;
+		float fheight = (float)height;
+		
+		StartCoroutine(RotateToPosition(card.transform,new Vector3(-3, -3, 0), 0));
+		StartCoroutine(MoveToPosition(card.transform, new Vector3((c * 2) - 1, -(fheight / 2) + 2, -1), .5f, 1));
+		Debug.Log(card.GetComponent<Card>().GetName());
+		B.BoardCards[c] = card;
+		P.Hand[0] = null;
+	}
 	
 	public void MoveCardToGrave(GameObject card)
 	{
