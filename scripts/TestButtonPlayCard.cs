@@ -5,15 +5,15 @@ using UnityEngine;
 public class TestButtonPlayCard : MonoBehaviour
 {
 
-	private Player P;
+	private Board B;
 	
 	void Start ()
 	{
-		P = Camera.main.GetComponent<Main>().MPlayer;
+		B = Camera.main.GetComponent<Main>().MBoard;
 	}
 
 	public void PlayACard()
 	{
-		P.PlayCard();
+		B.PlayCard();
 	}
 }

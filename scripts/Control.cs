@@ -25,9 +25,11 @@ public class Control : MonoBehaviour {
 		R = Camera.main.GetComponent<ReadJson>();
 		W = Camera.main.GetComponent<WriteJson>();
 		G = Camera.main.GetComponent<Grave>();
+		B = Camera.main.GetComponent<Main>().MBoard;
 		P.Start();
 		R.Start();
 		W.Start();
+		B.Start();
 		//get 50 random cards [only for testing]
 		for (int co = 0; co < 50; co++)
 		{
@@ -65,9 +67,9 @@ public class Control : MonoBehaviour {
 		double height = Camera.main.orthographicSize * 2.0;
 		float fheight = (float)height;
 		
-		StartCoroutine(MoveToPosition(card.transform, new Vector3((c * 0.8f) - 1, -(fheight / 2) + 2, -1), .5f, 1));
+		StartCoroutine(MoveToPosition(card.transform, new Vector3((c * 2) - 10, -(fheight / 2) + 5, -1), .5f, 1));
 		Debug.Log(card.GetComponent<Card>().GetName());
-		B.BoardCards[c] = card;
+		B.BoardCards[0] = card;
 		P.Hand[0] = null;
 	}
 	
