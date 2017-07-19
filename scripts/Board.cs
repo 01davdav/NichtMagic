@@ -18,26 +18,26 @@ public class Board{
                 B = Camera.main.GetComponent<Main>().MBoard;
         }
         
-        public void PlayCard(GameObject card)
+        public void PlayCard(GameObject card, int positionOfCardInHand)
         {
                 int i = BoardCardLength();
-                int c = 1; //soll später die position sein wo es platziert werden soll, nur für testzwecke auf 3 gesetzt
+                int c = 0; //soll später die position sein wo es platziert werden soll, nur für testzwecke auf 3 gesetzt
                 
                 Debug.Log(i);
                 if (i == 0)
                 {
-                        C.MoveCardToBoard(card, 5, 0, false); 
+                        C.MoveCardToBoard(card, 5, 0, false, positionOfCardInHand); 
                 }
                 else if (i == 1)
                 {
                         if (c == 0)
                         {
-                                C.MoveCardToBoard(card, 4.5f, 0, true);
+                                C.MoveCardToBoard(card, 4.5f, 0, true, positionOfCardInHand);
                                 C.MoveCardToBoard(B.BoardCards[1], 5.5f, 1, false);
                         }
                         else
                         {
-                                C.MoveCardToBoard(card, 5.5f, 1, false);
+                                C.MoveCardToBoard(card, 5.5f, 1, false, positionOfCardInHand);
                                 C.MoveCardToBoard(B.BoardCards[0], 4.5f, 0, false);
                                 
                         }
@@ -46,19 +46,19 @@ public class Board{
                 {
                         if (c == 0)
                         {
-                                C.MoveCardToBoard(card, 4f, 0, false);
+                                C.MoveCardToBoard(card, 4f, 0, false, positionOfCardInHand);
                                 C.MoveCardToBoard(B.BoardCards[1], 5f, 1, false);
                                 C.MoveCardToBoard(B.BoardCards[2], 6f, 2, false);
                         }
                         else if (c == 1)
                         {
-                                C.MoveCardToBoard(card, 5f, 1, true);
+                                C.MoveCardToBoard(card, 5f, 1, true, positionOfCardInHand);
                                 C.MoveCardToBoard(B.BoardCards[0], 4f, 0, false);
                                 C.MoveCardToBoard(B.BoardCards[1], 6f, 1, false);
                         }
                         else
                         {
-                                C.MoveCardToBoard(card, 6f, 2, false);
+                                C.MoveCardToBoard(card, 6f, 2, false, positionOfCardInHand);
                                 C.MoveCardToBoard(B.BoardCards[0], 4f, 0, false);
                                 C.MoveCardToBoard(B.BoardCards[1], 5f, 1, false);
                         }
