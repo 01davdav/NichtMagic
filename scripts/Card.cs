@@ -60,7 +60,7 @@ public class Card : MonoBehaviour
 	{
 		if (P.Hand.Contains(this.gameObject))
 		{
-			B.PlayCard(this.gameObject);
+			B.PlayCard(this.gameObject,0);
 		}
 	}
 

@@ -56,46 +56,47 @@ public class Control : MonoBehaviour {
 		float fheight = (float)height;
 
 		StartCoroutine(RotateToPosition(card.transform,new Vector3(-5, -5, 0), 0));
-		StartCoroutine(MoveToPosition(card.transform, new Vector3((c * 2) - 5, -(fheight / 2) + 2, -1), .5f, 1));
+		StartCoroutine(MoveToPosition(card.transform, new Vector3((c * 2) - 5, -(fheight / 2) + 2, -1), .5f, 0));
 		Debug.Log(card.GetComponent<Card>().GetName());
 		P.Hand[c] = card;
 		P.Deck.Remove(P.Deck[0]);
 	}
-
-	public void MoveCardToBoard(GameObject card, float c, int position, Boolean loop)
+	
+	public void MoveToBoard(GameObject card, int c)
 	{
 		double height = Camera.main.orthographicSize * 2.0;
 		float fheight = (float)height;
-		
-		StartCoroutine(MoveToPosition(card.transform, new Vector3((c * 2) - 10, -(fheight / 2) + 5, -1), .5f, 1));
-		Debug.Log(card.GetComponent<Card>().GetName());
-		B.BoardCards[position] = card;
-		if (loop == true)
+
+		if (B.BoardCards[c] == null)
 		{
-			for (int i = B.BoardCards.Length; i >= position + 2; i--)
+			B.BoardCards[c] = card;
+			P.Hand[System.Array.IndexOf(P.Hand, card)] = null;
+		}
+		else
+		{
+			GameObject a = B.BoardCards[c];
+			GameObject b = card;
+			for (int i = c; i < (B.BoardCards.Length-1); i++)
 			{
-				B.BoardCards[i - 1] = B.BoardCards[i - 2];
+				B.BoardCards[i] = b;
+				b = a;
+				a = B.BoardCards[i + 1];
 			}
+			P.Hand[System.Array.IndexOf(P.Hand, card)] = null;
+		}
+
+		int aoc = 0;
+		for (aoc = 0; aoc < B.BoardCards.Length; aoc++)
+		{
+			if (B.BoardCards[aoc] == null)
+				break;
+		}
+		
+		for (int i = 0; i < aoc; i++)
+		{
+			StartCoroutine(MoveToPosition(B.BoardCards[i].transform, new Vector3((i * 2) - (aoc-1), -(fheight / 2) + 5, -2), .5f, 2));
 		}
 	}
-
-	public void MoveCardToBoard(GameObject card, float c, int position, Boolean loop, int positionOfHandCard)
-	{
-		double height = Camera.main.orthographicSize * 2.0;
-		float fheight = (float) height;
-
-		StartCoroutine(MoveToPosition(card.transform, new Vector3((c * 2) - 10, -(fheight / 2) + 5, -1), .5f, 1));
-		Debug.Log(card.GetComponent<Card>().GetName());
-		B.BoardCards[position] = card;
-		if (loop == true)
-		{
-			for (int i = B.BoardCards.Length; i >= position + 2; i--)
-			{
-				B.BoardCards[i - 1] = B.BoardCards[i - 2];
-			}
-		}
-		P.Hand[positionOfHandCard] = null;
-}
 	
 	public void MoveCardToGrave(GameObject card)
 	{

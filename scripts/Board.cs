@@ -6,7 +6,7 @@ using Debug = UnityEngine.Debug;
 
 public class Board{
         
-        public GameObject[] BoardCards = new GameObject[9];
+        public GameObject[] BoardCards = new GameObject[10];
         private Control C;
         private Player P;
         private Board B;
@@ -18,52 +18,17 @@ public class Board{
                 B = Camera.main.GetComponent<Main>().MBoard;
         }
         
-        public void PlayCard(GameObject card)
+        public void PlayCard(GameObject card, int c)
         {
-                card.GetComponent<Card>().Exit();
-                int positionOfCardInHand = System.Array.IndexOf(P.Hand, card);
-                int i = BoardCardLength();
-                int c = 1; //soll später die position sein wo es platziert werden soll, nur für testzwecke auf 3 gesetzt
-                
-                Debug.Log(i);
-                if (i == 0)
+                if (BoardCards[BoardCards.Length-2] == null)
                 {
-                        C.MoveCardToBoard(card, 5, 0, false, positionOfCardInHand); 
-                }
-                else if (i == 1)
-                {
-                        if (c == 0)
-                        {
-                                C.MoveCardToBoard(card, 4.5f, 0, true, positionOfCardInHand);
-                                C.MoveCardToBoard(B.BoardCards[1], 5.5f, 1, false);
-                        }
-                        else
-                        {
-                                C.MoveCardToBoard(card, 5.5f, 1, false, positionOfCardInHand);
-                                C.MoveCardToBoard(B.BoardCards[0], 4.5f, 0, false);
-                                
-                        }
-                }
-                else if (i == 2)
-                {
-                        if (c == 0)
-                        {
-                                C.MoveCardToBoard(card, 4f, 0, false, positionOfCardInHand);
-                                C.MoveCardToBoard(B.BoardCards[1], 5f, 1, false);
-                                C.MoveCardToBoard(B.BoardCards[2], 6f, 2, false);
-                        }
-                        else if (c == 1)
-                        {
-                                C.MoveCardToBoard(card, 5f, 1, true, positionOfCardInHand);
-                                C.MoveCardToBoard(B.BoardCards[0], 4f, 0, false);
-                                C.MoveCardToBoard(B.BoardCards[2], 6f, 2, false);
-                        }
-                        else
-                        {
-                                C.MoveCardToBoard(card, 6f, 2, false, positionOfCardInHand);
-                                C.MoveCardToBoard(B.BoardCards[0], 4f, 0, false);
-                                C.MoveCardToBoard(B.BoardCards[1], 5f, 1, false);
-                        }
+                        card.GetComponent<Card>().Exit();
+                        int positionOfCardInHand = System.Array.IndexOf(P.Hand, card);
+                        int i = BoardCardLength();
+
+                        Debug.Log(i);
+                        C.MoveToBoard(card, c);
+                        Debug.Log(BoardCards[8]);
                 }
         }
 
