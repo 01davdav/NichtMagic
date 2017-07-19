@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,7 +19,45 @@ public class Card : MonoBehaviour
 	private String _texturePath;
 
 	private int _id;
+
+	private Control C;
+	private Player P;
+	private Board B;
 	
+	private void Start()
+	{
+		C = Camera.main.GetComponent<Control>();
+		P = Camera.main.GetComponent<Main>().MPlayer;
+		B = Camera.main.GetComponent<Main>().MBoard;
+	}
+
+	private Color startcolor;
+	
+	void OnMouseEnter()
+	{
+		if (P.Hand.Contains(this.gameObject))
+		{
+			this.gameObject.transform.localScale = new Vector3(1, 1, 1);
+			this.gameObject.GetComponent<Renderer>().sortingOrder = 1;
+		}
+	}
+	void OnMouseExit()
+	{
+		if (P.Hand.Contains(this.gameObject))
+		{
+			this.gameObject.transform.localScale = new Vector3(.8f, .8f, .8f);
+			this.gameObject.GetComponent<Renderer>().sortingOrder = 0;
+		}
+	}
+
+	private void OnMouseDown()
+	{
+		if (P.Hand.Contains(this.gameObject))
+		{
+			B.PlayCard(this.gameObject);
+		}
+	}
+
 	public Card(String newName, int newManacosts, int newAttack, int newLife, int newShield, String newTexturePath, int newId) //create new Creature Card object
 	{
 		SetName(newName);
