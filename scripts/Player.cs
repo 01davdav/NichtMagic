@@ -48,6 +48,23 @@ public class Player
 		}
 		C.Pop();
 	}
+
+	public void PlayCard()
+	{
+		for (int c = 0; c < 9; c++)
+		{
+			if (B.BoardCards[c] == null)
+			{
+				if (Hand[0] != null)
+				{
+					Debug.Log(Hand[0].GetComponent<Card>().GetName());
+					C.MoveCardToBoard(Hand[0], c);
+					break;
+				}
+			}
+		}
+		
+	}
 	
 	public void PlayCard()
 	{
