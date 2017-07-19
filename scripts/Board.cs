@@ -23,7 +23,7 @@ public class Board{
                 card.GetComponent<Card>().Exit();
                 int positionOfCardInHand = System.Array.IndexOf(P.Hand, card);
                 int i = BoardCardLength();
-                int c = 0; //soll später die position sein wo es platziert werden soll, nur für testzwecke auf 3 gesetzt
+                int c = 1; //soll später die position sein wo es platziert werden soll, nur für testzwecke auf 3 gesetzt
                 
                 Debug.Log(i);
                 if (i == 0)
@@ -56,7 +56,7 @@ public class Board{
                         {
                                 C.MoveCardToBoard(card, 5f, 1, true, positionOfCardInHand);
                                 C.MoveCardToBoard(B.BoardCards[0], 4f, 0, false);
-                                C.MoveCardToBoard(B.BoardCards[1], 6f, 1, false);
+                                C.MoveCardToBoard(B.BoardCards[2], 6f, 2, false);
                         }
                         else
                         {

@@ -69,14 +69,14 @@ public class Control : MonoBehaviour {
 		
 		StartCoroutine(MoveToPosition(card.transform, new Vector3((c * 2) - 10, -(fheight / 2) + 5, -1), .5f, 1));
 		Debug.Log(card.GetComponent<Card>().GetName());
+		B.BoardCards[position] = card;
 		if (loop == true)
 		{
-			for (int i = B.BoardCards.Length; i > position + 2; i--)
+			for (int i = B.BoardCards.Length; i >= position + 2; i--)
 			{
-				B.BoardCards[i-1] = B.BoardCards[i-2];
+				B.BoardCards[i - 1] = B.BoardCards[i - 2];
 			}
 		}
-		B.BoardCards[position] = card;
 	}
 
 	public void MoveCardToBoard(GameObject card, float c, int position, Boolean loop, int positionOfHandCard)
@@ -86,14 +86,14 @@ public class Control : MonoBehaviour {
 
 		StartCoroutine(MoveToPosition(card.transform, new Vector3((c * 2) - 10, -(fheight / 2) + 5, -1), .5f, 1));
 		Debug.Log(card.GetComponent<Card>().GetName());
+		B.BoardCards[position] = card;
 		if (loop == true)
 		{
-			for (int i = B.BoardCards.Length; i > position + 2; i--)
+			for (int i = B.BoardCards.Length; i >= position + 2; i--)
 			{
 				B.BoardCards[i - 1] = B.BoardCards[i - 2];
 			}
 		}
-		B.BoardCards[position] = card;
 		P.Hand[positionOfHandCard] = null;
 }
 	
