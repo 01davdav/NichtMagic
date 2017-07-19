@@ -18,7 +18,25 @@ public class Card : MonoBehaviour
 	private String _texturePath;
 
 	private int _id;
+
+	private Player P;
 	
+	private void Start()
+	{
+		P = Camera.main.GetComponent<Main>().MPlayer;
+	}
+
+	private Color startcolor;
+	
+	void OnMouseEnter()
+	{
+		
+	}
+	void OnMouseExit()
+	{
+		
+	}
+
 	public Card(String newName, int newManacosts, int newAttack, int newLife, int newShield, String newTexturePath, int newId) //create new Creature Card object
 	{
 		SetName(newName);

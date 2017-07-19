@@ -18,7 +18,6 @@ public class Player
 	public void Start()
 	{
 		C = Camera.main.GetComponent<Control>();
-		B = Camera.main.GetComponent<Board>();
 	}
 	
 	//Drawing the first five cards
