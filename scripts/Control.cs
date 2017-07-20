@@ -16,6 +16,10 @@ public class Control : MonoBehaviour {
 	private WriteJson W;
 	private Grave G;
 	private Board B;
+
+
+	[SerializeField]
+	private AnimationCurve _animationCurve;
 	
 	// Use this for initialization
 	void Start ()
@@ -118,7 +122,7 @@ public class Control : MonoBehaviour {
 		while(t < 1)
 		{
 			t += Time.deltaTime / timeToMove;
-			transform.position = Vector3.Lerp(currentPos, position, t);
+			transform.position = Vector3.Lerp(currentPos, position, _animationCurve.Evaluate(t));
 			yield return null;
 		}	
 		t = 0f;

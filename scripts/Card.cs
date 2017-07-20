@@ -19,6 +19,8 @@ public class Card : MonoBehaviour
 	private String _texturePath;
 
 	private int _id;
+	[SerializeField] 
+	private TextMesh stats;
 
 	private Control C;
 	private Player P;
@@ -37,7 +39,7 @@ public class Card : MonoBehaviour
 	{
 		if (P.Hand.Contains(this.gameObject))
 		{
-			this.gameObject.transform.localScale = new Vector3(1, 1, 1);
+			this.gameObject.transform.localScale = new Vector3(1, 1, .8f);
 			this.gameObject.GetComponent<Renderer>().sortingOrder = 1;
 		}
 	}
