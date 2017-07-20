@@ -25,6 +25,21 @@ public class Hero
 		SetMana(newMaxMana);
 	}
 
+	public void DisplayMana()
+	{
+		int mana = GetMana();
+		int maxmana = GetMaxMana();
+		int mmana = maxmana - mana;
+		for (int i = 0; i < mana; i++)
+		{
+			//display the blue mana
+		}
+		for (int i = 0; i < mmana; i++)
+		{
+			//display the grey mana
+		}
+	}
+
 	public void SetName(string newName) //set the name of the hero, cant be null and empty
 	{
 		if (!String.IsNullOrEmpty(newName))
