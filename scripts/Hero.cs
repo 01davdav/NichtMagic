@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Runtime.ExceptionServices;
 using UnityEngine;
 using UnityEngineInternal.Input;
 
@@ -15,7 +16,16 @@ public class Hero : MonoBehaviour
 	private int _maxMaxMana = 15;
 	private Boolean _mayattack;
 	private string  _name;
-	
+
+	private void Start()
+	{
+		int c = GetMaxMana();
+		for (int i = 0; i < c; i++)
+		{
+			
+		}
+	}
+
 	public Hero(int newHp, int newAttack, int newMaxMana) //create new Hero object
 	{
 		SetHp(newHp);
