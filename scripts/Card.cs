@@ -33,46 +33,14 @@ public class Card : MonoBehaviour
 		B = Camera.main.GetComponent<Main>().MBoard;
 	}
 
-	private Color startcolor;
-	
-	void OnMouseEnter()
-	{
-		if (P.Hand.Contains(this.gameObject))
-		{
-			this.gameObject.transform.localScale = new Vector3(1, 1, .8f);
-			this.gameObject.GetComponent<Renderer>().sortingOrder = 1;
-		}
-	}
-	void OnMouseExit()
-	{
-		if (P.Hand.Contains(this.gameObject))
-		{
-			this.gameObject.transform.localScale = new Vector3(.8f, .8f, .8f);
-			this.gameObject.GetComponent<Renderer>().sortingOrder = 0;
-		}
-	}
-
-	public void Exit()
-	{
-		this.gameObject.transform.localScale = new Vector3(.8f, .8f, .8f);
-		this.gameObject.GetComponent<Renderer>().sortingOrder = 0;
-	}
-	
-	private void OnMouseDown()
-	{
-		if (P.Hand.Contains(this.gameObject))
-		{
-			B.PlayCard(this.gameObject,0);
-		}
-	}
-
 	public Card(String newName, int newManacosts, int newAttack, int newLife, int newShield, String newTexturePath, int newId) //create new Creature Card object
 	{
 		SetName(newName);
 		SetManacosts(newManacosts);
 		SetAttack(newAttack);
 		SetLife(newLife);
-		SetShield(newShield);
+		SetShield(newShield);		
+		SetCurrentShield(newShield);
 		SetPath(newTexturePath);
 		SetId(newId);
 	}
@@ -84,6 +52,7 @@ public class Card : MonoBehaviour
 		SetAttack(newAttack);
 		SetLife(newLife);
 		SetShield(newShield);
+		SetCurrentShield(newShield);
 		SetPath(newTexturePath);
 		SetId(newId);
 	}
@@ -92,6 +61,65 @@ public class Card : MonoBehaviour
 	{
 		SetName(newName);
 		SetManacosts(newManacosts);
+	}
+
+	public void UpdateTM()
+	{
+		stats.text = _attack.ToString()+"-"+_life.ToString()+"-"+_currentShield.ToString();
+	}
+
+	private Color startcolor;
+	
+	void OnMouseEnter()
+	{
+		if (P.Hand.Contains(this.gameObject))
+		{
+			this.gameObject.transform.localScale = new Vector3(1, 1, .8f);
+			this.gameObject.GetComponent<Renderer>().sortingOrder = 1;
+			stats.GetComponent<Renderer>().sortingOrder = 1;
+		}
+	}
+	void OnMouseExit()
+	{
+		if (P.Hand.Contains(this.gameObject))
+		{
+			this.gameObject.transform.localScale = new Vector3(.8f, .8f, .8f);
+			this.gameObject.GetComponent<Renderer>().sortingOrder = 0;
+			stats.GetComponent<Renderer>().sortingOrder = 0;
+		}
+	}
+
+	public void Exit()
+	{
+		this.gameObject.transform.localScale = new Vector3(.8f, .8f, .8f);
+		this.gameObject.GetComponent<Renderer>().sortingOrder = 0;
+		stats.GetComponent<Renderer>().sortingOrder = 0;
+	}
+
+	private void OnMouseUp()
+	{
+		Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+		if (P.Hand.Contains(this.gameObject) && pos.y > -1.4)
+		{
+			int newSlot = 0;
+
+			int aoc = 0;
+			for (aoc = 0; aoc < B.BoardCards.Length; aoc++)
+			{
+				if (B.BoardCards[aoc] == null)
+					break;
+			}
+
+			for (newSlot = 0; newSlot < aoc; newSlot++)
+			{
+				if (pos.x < B.BoardCards[newSlot].transform.position.x)
+				{
+					break;
+				}
+			}
+
+			B.PlayCard(this.gameObject, newSlot);
+		}
 	}
 
 	public void SetPath(String newTexturePath)

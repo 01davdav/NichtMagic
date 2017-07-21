@@ -42,6 +42,7 @@ public class Control : MonoBehaviour {
 			P.Deck.Add(thisCard);
 			if(thisCard.GetComponent<Card>().GetPath() != "path")
 				thisCard.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(thisCard.GetComponent<Card>().GetPath());
+			thisCard.GetComponent<Card>().UpdateTM();
 		}
 		//Shuffling the Deck
 		for (int i = 0; i < P.Deck.Count; i++) {
@@ -59,18 +60,15 @@ public class Control : MonoBehaviour {
 		double height = Camera.main.orthographicSize * 2.0;
 		float fheight = (float)height;
 
-		StartCoroutine(RotateToPosition(card.transform,new Vector3(-5, -5, 0), 0));
-		StartCoroutine(MoveToPosition(card.transform, new Vector3((c * 2) - 5, -(fheight / 2) + 2, -1), .5f, 0));
-		Debug.Log(card.GetComponent<Card>().GetName());
 		P.Hand[c] = card;
 		P.Deck.Remove(P.Deck[0]);
+		
+		StartCoroutine(RotateToPosition(card.transform,new Vector3(-5, -5, 0), 0));
+		UpdateHand();
 	}
 	
 	public void MoveToBoard(GameObject card, int c)
 	{
-		double height = Camera.main.orthographicSize * 2.0;
-		float fheight = (float)height;
-
 		if (B.BoardCards[c] == null)
 		{
 			B.BoardCards[c] = card;
@@ -88,18 +86,9 @@ public class Control : MonoBehaviour {
 			}
 			P.Hand[System.Array.IndexOf(P.Hand, card)] = null;
 		}
-
-		int aoc = 0;
-		for (aoc = 0; aoc < B.BoardCards.Length; aoc++)
-		{
-			if (B.BoardCards[aoc] == null)
-				break;
-		}
 		
-		for (int i = 0; i < aoc; i++)
-		{
-			StartCoroutine(MoveToPosition(B.BoardCards[i].transform, new Vector3((i * 2) - (aoc-1), -(fheight / 2) + 5, -2), .5f, 2));
-		}
+		UpdateBoard();
+		UpdateHand();
 	}
 	
 	public void MoveCardToGrave(GameObject card)
@@ -113,6 +102,56 @@ public class Control : MonoBehaviour {
 		G.Graveyard.Add(card);
 		P.Deck.Remove(P.Deck[0]);
 		G.Pop();
+	}
+
+	public void UpdateHand()
+	{
+		double height = Camera.main.orthographicSize * 2.0;
+		float fheight = (float)height;
+
+		Boolean cont = false;
+		do
+		{
+			cont = false;
+			for (int c = (P.Hand.Length - 1); c > 0; c--)
+			{
+				if (P.Hand[c] != null && P.Hand[c - 1] == null)
+				{
+					P.Hand[c - 1] = P.Hand[c];
+					P.Hand[c] = null;
+					cont = true;
+				}
+			}
+		} while (cont);
+		int aoc = 0;
+		for (aoc = 0; aoc < P.Hand.Length; aoc++)
+		{
+			if (P.Hand[aoc] == null)
+				break;
+		}
+		
+		for (int i = 0; i < aoc; i++)
+		{
+			StartCoroutine(MoveToPosition(P.Hand[i].transform, new Vector3((i * 2) - (aoc-1), -(fheight / 2) + 2, -2), .5f, 0));
+		}
+		
+	}
+	public void UpdateBoard()
+	{
+		double height = Camera.main.orthographicSize * 2.0;
+		float fheight = (float)height;
+		
+		int aoc = 0;
+		for (aoc = 0; aoc < B.BoardCards.Length; aoc++)
+		{
+			if (B.BoardCards[aoc] == null)
+				break;
+		}
+		
+		for (int i = 0; i < aoc; i++)
+		{
+			StartCoroutine(MoveToPosition(B.BoardCards[i].transform, new Vector3((i * 2) - (aoc-1), -(fheight / 2) + 5, -2), .5f, 2));
+		}
 	}
 	
 	public IEnumerator MoveToPosition(Transform transform, Vector3 position, float timeToMove, float back)
