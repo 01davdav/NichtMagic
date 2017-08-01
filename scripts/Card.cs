@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Security.Policy;
 using NUnit.Framework.Constraints;
 using UnityEngine;
 using UnityEngine.UI;
@@ -65,10 +66,18 @@ public class Card : MonoBehaviour
 
 	public void UpdateTM()
 	{
-		if(_type == 0)
-			stats.text = _attack.ToString()+";"+_life.ToString()+";"+_currentShield.ToString()+";";
-		if(_type == 1)
-			stats.text = "+"+_attack.ToString()+";+"+_life.ToString()+";+"+_currentShield.ToString()+";";
+		if (_type == 0)
+		{
+			if(GetAllAttack() != GetAttack()||GetAllLife() != GetLife()||GetAllShields() != GetShield())
+				stats.color = new Color32(51,36,255,255);
+			if (GetAllAttack() == GetAttack() && GetAllLife() == GetLife() && GetAllShields() > GetShield())
+				stats.color = Color.black;
+			stats.text = GetAllAttack().ToString() + ";" + GetAllLife().ToString() + ";" + GetAllShields().ToString() + ";";
+		}
+		if (_type == 1)
+		{
+			stats.text = "+" + _attack.ToString() + ";+" + _life.ToString() + ";+" + _currentShield.ToString() + ";";
+		}
 	}
 
 	private Color startcolor;
@@ -339,6 +348,34 @@ public class Card : MonoBehaviour
 	{
 		return _type;
 	}
+
+	public int GetAllAttack()
+	{
+		int i = 0;
+		foreach (var c in Attached)
+		{
+			i += c.GetComponent<Card>().GetAttack();
+		}
+		return _attack + i;
+	}
 	
+	public int GetAllShields()
+	{
+		int i = 0;
+		foreach (var c in Attached)
+		{
+			i += c.GetComponent<Card>().GetShield();
+		}
+		return _shield + i;
+	}
 	
+	public int GetAllLife()
+	{
+		int i = 0;
+		foreach (var c in Attached)
+		{
+			i += c.GetComponent<Card>().GetLife();
+		}
+		return _life + i;
+	}
 }

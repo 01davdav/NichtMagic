@@ -22,9 +22,8 @@ public class Board{
 
                 if (card.GetComponent<Card>().GetType() == 0)
                 {
-                        if (BoardCards[BoardCards.Length - 3] == null)
+                        if (BoardCards[BoardCards.Length - 2] == null)
                         {
-                                card.GetComponent<Card>().Exit();
                                 int positionOfCardInHand = System.Array.IndexOf(P.Hand, card);
                                 int i = BoardCardLength();
 
@@ -38,13 +37,14 @@ public class Board{
                         GameObject thisC = null;
                         for (int i = 0; i < BoardCardLength(); i++)
                         {
-                                if (BoardCards[i].tag == "Active")
+                                if (BoardCards[i].CompareTag("Active"))
                                 {
                                         thisC = BoardCards[i];
                                         break;
                                 }
                         }
-                        C.MoveToCard(thisC, card);
+                        if(thisC != null)
+                                C.MoveToCard(thisC, card);
                 }
         }
 

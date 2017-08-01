@@ -77,7 +77,7 @@ public class Control : MonoBehaviour {
 		}
 		else
 		{
-			GameObject a = B.BoardCards[0];
+			GameObject a = B.BoardCards[c];
 			GameObject b = card;
 			for (int i = c; i < (B.BoardCards.Length-1); i++)
 			{
@@ -97,6 +97,7 @@ public class Control : MonoBehaviour {
 		thisCard.GetComponent<Card>().isIngame = true;
 		mainCard.GetComponent<Card>().Attached.Add(thisCard);
 		P.Hand[System.Array.IndexOf(P.Hand, thisCard)] = null;
+		mainCard.GetComponent<Card>().UpdateTM();
 		
 		UpdateBoard();
 		UpdateHand();
@@ -146,7 +147,6 @@ public class Control : MonoBehaviour {
 		{
 			StartCoroutine(MoveToPosition(P.Hand[i].transform, new Vector3((i * 2) - (aoc-1), -(fheight / 2) + 2, -2), .5f, 0));
 		}
-		
 	}
 	public void UpdateBoard()
 	{
