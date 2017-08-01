@@ -6,38 +6,54 @@ using Debug = UnityEngine.Debug;
 
 public class Board{
         
-        public GameObject[] BoardCards = new GameObject[10];
+        public GameObject[] BoardCards;
         private Control C;
         private Player P;
-        private Board B;
 
         public void Start()
         {
+                BoardCards = new GameObject[10];
                 C = Camera.main.GetComponent<Control>();
                 P = Camera.main.GetComponent<Main>().MPlayer;
-                B = Camera.main.GetComponent<Main>().MBoard;
         }
-        
+
         public void PlayCard(GameObject card, int c)
         {
-                if (BoardCards[BoardCards.Length-2] == null)
-                {
-                        card.GetComponent<Card>().Exit();
-                        int positionOfCardInHand = System.Array.IndexOf(P.Hand, card);
-                        int i = BoardCardLength();
 
-                        Debug.Log(i);
-                        C.MoveToBoard(card, c);
-                        Debug.Log(BoardCards[8]);
+                if (card.GetComponent<Card>().GetType() == 0)
+                {
+                        if (BoardCards[BoardCards.Length - 3] == null)
+                        {
+                                card.GetComponent<Card>().Exit();
+                                int positionOfCardInHand = System.Array.IndexOf(P.Hand, card);
+                                int i = BoardCardLength();
+
+                                Debug.Log(i);
+                                C.MoveToBoard(card, c);
+                        }
+                }
+                
+                if (card.GetComponent<Card>().GetType() == 1)
+                {
+                        GameObject thisC = null;
+                        for (int i = 0; i < BoardCardLength(); i++)
+                        {
+                                if (BoardCards[i].tag == "Active")
+                                {
+                                        thisC = BoardCards[i];
+                                        break;
+                                }
+                        }
+                        C.MoveToCard(thisC, card);
                 }
         }
 
         public int BoardCardLength()
         {
                 int counter = 0;
-                for (int i = 0; i < B.BoardCards.Length; i++)
+                for (int i = 0; i < BoardCards.Length; i++)
                 {
-                        if (B.BoardCards[i] != null)
+                        if (BoardCards[i] != null)
                         {
                                 counter++;
                         }

@@ -57,6 +57,7 @@ public class Control : MonoBehaviour {
 
 	public void MoveCardToHand(GameObject card, int c)
 	{
+		card.GetComponent<Card>().isIngame = true;
 		double height = Camera.main.orthographicSize * 2.0;
 		float fheight = (float)height;
 
@@ -76,7 +77,7 @@ public class Control : MonoBehaviour {
 		}
 		else
 		{
-			GameObject a = B.BoardCards[c];
+			GameObject a = B.BoardCards[0];
 			GameObject b = card;
 			for (int i = c; i < (B.BoardCards.Length-1); i++)
 			{
@@ -91,8 +92,19 @@ public class Control : MonoBehaviour {
 		UpdateHand();
 	}
 	
+	public void MoveToCard(GameObject mainCard, GameObject thisCard)
+	{
+		thisCard.GetComponent<Card>().isIngame = true;
+		mainCard.GetComponent<Card>().Attached.Add(thisCard);
+		P.Hand[System.Array.IndexOf(P.Hand, thisCard)] = null;
+		
+		UpdateBoard();
+		UpdateHand();
+	}
+	
 	public void MoveCardToGrave(GameObject card)
 	{
+		card.GetComponent<Card>().isIngame = false;
 		double height = Camera.main.orthographicSize * 2.0;
 		float fheight = (float)height;
 		
@@ -150,7 +162,13 @@ public class Control : MonoBehaviour {
 		
 		for (int i = 0; i < aoc; i++)
 		{
+			//formula for se position of se boardcards
 			StartCoroutine(MoveToPosition(B.BoardCards[i].transform, new Vector3((i * 2) - (aoc-1), -(fheight / 2) + 5, -2), .5f, 2));
+			for (int j = 0; j < B.BoardCards[i].GetComponent<Card>().Attached.Count; j++)
+			{
+				//formula for se position of se attachedcards
+				StartCoroutine(MoveToPosition(B.BoardCards[i].GetComponent<Card>().Attached[j].transform , new Vector3((i * 2) - (aoc-1), -(fheight / 2) + 5 +((j+1)/2f), (j+1)), .5f, 0));
+			}
 		}
 	}
 	

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
+using NUnit.Framework.Constraints;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,6 +18,9 @@ public class Card : MonoBehaviour
 	private int _currentShield;
 	private Boolean _breakable = true;
 	private String _texturePath;
+	private int _type;
+	public List<GameObject> Attached = new List<GameObject>();
+	public bool isIngame = false;
 
 	private int _id;
 	[SerializeField] 
@@ -33,7 +37,7 @@ public class Card : MonoBehaviour
 		B = Camera.main.GetComponent<Main>().MBoard;
 	}
 
-	public Card(String newName, int newManacosts, int newAttack, int newLife, int newShield, String newTexturePath, int newId) //create new Creature Card object
+	public Card(String newName, int newManacosts, int newAttack, int newLife, int newShield, String newTexturePath, int newType, int newId) //create new Creature Card object
 	{
 		SetName(newName);
 		SetManacosts(newManacosts);
@@ -43,9 +47,10 @@ public class Card : MonoBehaviour
 		SetCurrentShield(newShield);
 		SetPath(newTexturePath);
 		SetId(newId);
+		SetType(newType);
 	}
 	
-	public void SetCard(String newName, int newManacosts, int newAttack, int newLife, int newShield, String newTexturePath, int newId) //create new Creature Card object
+	public void SetCard(String newName, int newManacosts, int newAttack, int newLife, int newShield, String newTexturePath, int newType, int newId) //create new Creature Card object
 	{
 		SetName(newName);
 		SetManacosts(newManacosts);
@@ -55,37 +60,50 @@ public class Card : MonoBehaviour
 		SetCurrentShield(newShield);
 		SetPath(newTexturePath);
 		SetId(newId);
-	}
-
-	public Card(String newName, int newManacosts) //create new Spell Card object
-	{
-		SetName(newName);
-		SetManacosts(newManacosts);
+		SetType(newType);
 	}
 
 	public void UpdateTM()
 	{
-		stats.text = _attack.ToString()+"-"+_life.ToString()+"-"+_currentShield.ToString();
+		if(_type == 0)
+			stats.text = _attack.ToString()+";"+_life.ToString()+";"+_currentShield.ToString()+";";
+		if(_type == 1)
+			stats.text = "+"+_attack.ToString()+";+"+_life.ToString()+";+"+_currentShield.ToString()+";";
 	}
 
 	private Color startcolor;
 	
 	void OnMouseEnter()
 	{
-		if (P.Hand.Contains(this.gameObject))
+		if (isIngame)
 		{
 			this.gameObject.transform.localScale = new Vector3(1, 1, .8f);
-			this.gameObject.GetComponent<Renderer>().sortingOrder = 1;
-			stats.GetComponent<Renderer>().sortingOrder = 1;
+			if (B.BoardCards.Contains(this.gameObject))
+			{
+				gameObject.tag = "Active";
+			}
+				this.gameObject.GetComponent<Renderer>().sortingOrder = 2;
+				stats.GetComponent<Renderer>().sortingOrder = 2;
+				this.gameObject.transform.position += new Vector3(0,0,-10);
 		}
 	}
 	void OnMouseExit()
 	{
-		if (P.Hand.Contains(this.gameObject))
+		if (isIngame)
 		{
 			this.gameObject.transform.localScale = new Vector3(.8f, .8f, .8f);
-			this.gameObject.GetComponent<Renderer>().sortingOrder = 0;
-			stats.GetComponent<Renderer>().sortingOrder = 0;
+			if (B.BoardCards.Contains(this.gameObject))
+			{
+				gameObject.tag = "Untagged";
+				this.gameObject.GetComponent<Renderer>().sortingOrder = 1;
+				stats.GetComponent<Renderer>().sortingOrder = 1;
+			}
+			else
+			{
+				this.gameObject.GetComponent<Renderer>().sortingOrder = 0;
+				stats.GetComponent<Renderer>().sortingOrder = 0;
+			}
+			this.gameObject.transform.position += new Vector3(0,0,10);
 		}
 	}
 
@@ -309,4 +327,18 @@ public class Card : MonoBehaviour
 	{
 		return _id;
 	}
+	
+	public void SetType(int newType) //set manacosts of card
+	{
+		if (newType >= 0)
+		{
+			_type = newType;
+		}
+	}
+	public int GetType() //set manacosts of card
+	{
+		return _type;
+	}
+	
+	
 }

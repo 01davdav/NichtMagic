@@ -28,7 +28,7 @@ public class ReadJson : MonoBehaviour
 	{
 		card.GetComponent<Card>().SetCard((string) CardDataCards["Cards"][id]["name"], (int) CardDataCards["Cards"][id]["cost"],
 			(int) CardDataCards["Cards"][id]["attack"], (int) CardDataCards["Cards"][id]["life"], (int) CardDataCards["Cards"][id]["shield"],
-			(string) CardDataCards["Cards"][id]["path"],id);
+			(string) CardDataCards["Cards"][id]["path"], (int) CardDataCards["Cards"][id]["type"],id);
 	}
 
 	public void LoadDeck(List<GameObject> deck, int id)

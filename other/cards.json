@@ -6,7 +6,8 @@
       "attack" : 1,
       "life" : 4,
       "shield" : 3,
-      "path" : "creatures/testerus_cardus"
+      "path" : "creatures/testerus_cardus",
+	  "type" : 0
     },
     {
       "name" : "testerus cardus Mark2",
@@ -14,7 +15,17 @@
       "attack" : 2,
       "life" : 4,
       "shield" : 5,
-      "path" : "creatures/testerus_cardus_Mark2"
+      "path" : "creatures/testerus_cardus_Mark2",
+	  "type" : 0
+    },
+	{
+      "name" : "enchantus maximus",
+      "cost" : 4,
+      "attack" : 2,
+      "life" : 2,
+      "shield" : 2,
+      "path" : "creatures/enchantus_maximus",
+	  "type" : 1
     }
   ]
 }
