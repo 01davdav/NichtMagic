@@ -12,9 +12,9 @@ public class Turns
 
 	public void TStart()
 	{
-		Player P = Camera.main.GetComponent<Main>().MPlayer;
-		Hero H = Camera.main.GetComponent<Main>().MHero;
-		Board B = Camera.main.GetComponent<Main>().MBoard;
+		P = Camera.main.GetComponent<Main>().MPlayer;
+		H = Camera.main.GetComponent<Main>().MHero;
+		B = Camera.main.GetComponent<Main>().MBoard;
 	}
 
 	public void Turn()
