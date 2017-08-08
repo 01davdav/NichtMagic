@@ -9,42 +9,49 @@ public class Board{
         public GameObject[] BoardCards;
         private Control C;
         private Player P;
+        private Hero H;
 
         public void Start()
         {
                 BoardCards = new GameObject[10];
                 C = Camera.main.GetComponent<Control>();
                 P = Camera.main.GetComponent<Main>().MPlayer;
+                H = Camera.main.GetComponent<Main>().MHero;
+
         }
 
         public void PlayCard(GameObject card, int c)
         {
 
-                if (card.GetComponent<Card>().GetType() == 0)
+                if(H.GetMana() >= card.GetComponent<Card>().GetManacosts())
                 {
-                        if (BoardCards[BoardCards.Length - 2] == null)
+                        H.RemoveMana(card.GetComponent<Card>().GetManacosts());
+                        if (card.GetComponent<Card>().GetType() == 0)
                         {
-                                int positionOfCardInHand = System.Array.IndexOf(P.Hand, card);
-                                int i = BoardCardLength();
-
-                                Debug.Log(i);
-                                C.MoveToBoard(card, c);
-                        }
-                }
-                
-                if (card.GetComponent<Card>().GetType() == 1)
-                {
-                        GameObject thisC = null;
-                        for (int i = 0; i < BoardCardLength(); i++)
-                        {
-                                if (BoardCards[i].CompareTag("Active"))
+                                if (BoardCards[BoardCards.Length - 2] == null)
                                 {
-                                        thisC = BoardCards[i];
-                                        break;
+                                        int positionOfCardInHand = System.Array.IndexOf(P.Hand, card);
+                                        int i = BoardCardLength();
+
+                                        Debug.Log(i);
+                                        C.MoveToBoard(card, c);
                                 }
                         }
-                        if(thisC != null)
-                                C.MoveToCard(thisC, card);
+
+                        if (card.GetComponent<Card>().GetType() == 1)
+                        {
+                                GameObject thisC = null;
+                                for (int i = 0; i < BoardCardLength(); i++)
+                                {
+                                        if (BoardCards[i].CompareTag("Active"))
+                                        {
+                                                thisC = BoardCards[i];
+                                                break;
+                                        }
+                                }
+                                if (thisC != null)
+                                        C.MoveToCard(thisC, card);
+                        }
                 }
         }
 

@@ -12,7 +12,7 @@ public class Turns : MonoBehaviour {
 	private void Start()
 	{
 		Player P = Camera.main.GetComponent<Main>().MPlayer;
-		Hero H = Camera.main.GetComponent<Hero>();
+		Hero H = Camera.main.GetComponent<Main>().MHero;
 		Board B = Camera.main.GetComponent<Main>().MBoard;
 	}
 

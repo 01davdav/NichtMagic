@@ -16,7 +16,7 @@ public class testingButton : MonoBehaviour {
 
 	public void DrawACard () 
 	{
-		P.Draw();
+		T.Turn();
 	}
 
 	public void SaveCurrentDeck()
