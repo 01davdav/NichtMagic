@@ -21,7 +21,7 @@ public class Hero
 	{
 		SetHp(newHp);
 		SetAttack(newAttack);
-		SetMana(newMaxMana);
+		SetMaxMana(newMaxMana);
 	}
 
 	public void DisplayMana()
