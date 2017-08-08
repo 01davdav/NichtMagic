@@ -9,12 +9,14 @@ public class Turns
 	private Player P;
 	private Hero H;
 	private Board B;
+	private Control C;
 
 	public void TStart()
 	{
 		P = Camera.main.GetComponent<Main>().MPlayer;
 		H = Camera.main.GetComponent<Main>().MHero;
 		B = Camera.main.GetComponent<Main>().MBoard;
+		C = Camera.main.GetComponent<Control>();
 	}
 
 	public void Turn()
@@ -24,6 +26,7 @@ public class Turns
 		H.AddMaxMana(1); //increment maxmana
 		H.SetMana(H.GetMaxMana()); //set the mana of the hero to thei maxmana
 		P.Draw(); //draw a card
+		C.UpdateMana();
 		
 		
 		

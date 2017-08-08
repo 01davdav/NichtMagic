@@ -26,6 +26,7 @@ public class Board{
                 if(H.GetMana() >= card.GetComponent<Card>().GetManacosts())
                 {
                         H.RemoveMana(card.GetComponent<Card>().GetManacosts());
+                        C.UpdateMana();
                         if (card.GetComponent<Card>().GetType() == 0)
                         {
                                 if (BoardCards[BoardCards.Length - 2] == null)

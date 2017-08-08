@@ -17,6 +17,7 @@ public class Control : MonoBehaviour {
 	private Grave G;
 	private Board B;
 	private Turns T;
+	private Hero H;
 
 
 	[SerializeField]
@@ -32,6 +33,7 @@ public class Control : MonoBehaviour {
 		G = Camera.main.GetComponent<Grave>();
 		B = Camera.main.GetComponent<Main>().MBoard;
 		T = Camera.main.GetComponent<Main>().MTurns;
+		H = Camera.main.GetComponent<Main>().MHero;
 		P.Start();
 		R.Start();
 		W.Start();
@@ -210,5 +212,13 @@ public class Control : MonoBehaviour {
 	public void Pop()
 	{
 		_counter.text = P.Deck.Count.ToString();
+	}
+	
+	[SerializeField]
+	private UnityEngine.UI.Text _manacounter;
+	
+	public void UpdateMana()
+	{
+		_manacounter.text = H.GetMana() + "/" + H.GetMaxMana();
 	}
 }
