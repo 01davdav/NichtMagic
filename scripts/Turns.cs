@@ -3,13 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Turns : MonoBehaviour {
+public class Turns
+{
 
 	private Player P;
 	private Hero H;
 	private Board B;
 
-	private void Start()
+	public void TStart()
 	{
 		Player P = Camera.main.GetComponent<Main>().MPlayer;
 		Hero H = Camera.main.GetComponent<Main>().MHero;

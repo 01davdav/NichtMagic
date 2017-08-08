@@ -11,7 +11,7 @@ public class testingButton : MonoBehaviour {
 	{
 		P = Camera.main.GetComponent<Main>().MPlayer;
 		W = Camera.main.GetComponent<WriteJson>();
-		T = Camera.main.GetComponent<Turns>();
+		T = Camera.main.GetComponent<Main>().MTurns;
 	}
 
 	public void DrawACard () 

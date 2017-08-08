@@ -16,6 +16,7 @@ public class Control : MonoBehaviour {
 	private WriteJson W;
 	private Grave G;
 	private Board B;
+	private Turns T;
 
 
 	[SerializeField]
@@ -30,10 +31,12 @@ public class Control : MonoBehaviour {
 		W = Camera.main.GetComponent<WriteJson>();
 		G = Camera.main.GetComponent<Grave>();
 		B = Camera.main.GetComponent<Main>().MBoard;
+		T = Camera.main.GetComponent<Main>().MTurns;
 		P.Start();
 		R.Start();
 		W.Start();
 		B.Start();
+		T.TStart();
 		//get 50 random cards [only for testing]
 		for (int co = 0; co < 50; co++)
 		{
