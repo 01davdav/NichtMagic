@@ -25,27 +25,30 @@ public class Player
 		for (int c = 0; c < 4; c++)
 		{
 			yield return new WaitForSeconds(0.2f);
-			Draw();
+			Draw(1);
 		}
 	}
 	
 	//Method for drawing a card
-	public void Draw()
+	public void Draw(int i)
 	{
-		for (int c = 0; c < 7; c++)
+		for (int j = 0; j < i; j++)
 		{
-			if (c == 6)
+			for (int c = 0; c < 7; c++)
 			{
-				C.MoveCardToGrave(Deck[0]);
-				break;
+				if (c == 6)
+				{
+					C.MoveCardToGrave(Deck[0]);
+					break;
+				}
+				if (Hand[c] == null)
+				{
+					C.MoveCardToHand(Deck[0], c);
+					break;
+				}
 			}
-			if (Hand[c] == null)
-			{
-				C.MoveCardToHand(Deck[0],c);
-				break;
-			}
+			C.Pop();
 		}
-		C.Pop();
 	}
 	
 	

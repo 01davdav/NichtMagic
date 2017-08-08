@@ -23,7 +23,7 @@ public class Turns
 		
 		H.AddMaxMana(1); //increment maxmana
 		H.SetMana(H.GetMaxMana()); //set the mana of the hero to thei maxmana
-		P.Draw(); //draw a card
+		P.Draw(1); //draw a card
 		
 		
 		
